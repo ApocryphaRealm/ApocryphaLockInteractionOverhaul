@@ -1,0 +1,12 @@
+{
+    "name": "apocryphalockoverhaul",
+    "version-string": "1.0.0",
+    "description": "Apocrypha Lock Overhaul - lock skill requirements, auto-pick, smash locks with a weapon, an unlock spell with frost and fire tricks, and crime for all of it - an original SKSE rebuild of the Lock Overhaul idea on the Apocrypha Menu Framework",
+    "homepage": "https://github.com/ApocryphaRealm/ApocryphaLockOverhaul",
+    "license": "MIT",
+    "dependencies": [
+        "commonlibsse-ng",
+        "spdlog"
+    ],
+    "builtin-baseline": "8d3649ba34aab36914ddd897958599aa0a91b08e"
+}
