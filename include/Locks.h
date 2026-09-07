@@ -1,6 +1,6 @@
 #pragma once
 
-// Apocrypha Lock Overhaul - the core. Everything the mod does to a lock goes through here:
+// ApocryphaRealm Lock Interaction Overhaul - the core. Everything the mod does to a lock goes through here:
 //
 //   * the LockpickingMenu opening (requirements + auto-pick),
 //   * a weapon or a spell hitting a locked object (smash + unlock spell + frost/fire),

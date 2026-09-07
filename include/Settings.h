@@ -1,6 +1,6 @@
 #pragma once
 
-// Apocrypha Lock Overhaul - settings. Plain-file INI (redirector-proof, the project standard);
+// ApocryphaRealm Lock Interaction Overhaul - settings. Plain-file INI (redirector-proof, the project standard);
 // every value lives here in memory and the page edits it live. Everything is OFF by default.
 
 #include <cstdint>

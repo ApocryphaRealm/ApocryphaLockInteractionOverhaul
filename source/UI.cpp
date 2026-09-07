@@ -150,7 +150,7 @@ namespace UI
 			logger::warn("The installed menu framework is older than this plugin's settings menu needs. Update it (Apocrypha Menu Framework, or SKSE Menu Framework version 3 or newer).");
 			return;
 		}
-		SKSEMenuFramework::SetSection("Apocrypha Lock Overhaul");
+		SKSEMenuFramework::SetSection("ApocryphaRealm Lock Interaction Overhaul");
 		SKSEMenuFramework::AddSectionItem("Requirements", RequirementsPanel::Render);
 		SKSEMenuFramework::AddSectionItem("Smash Locks", SmashPanel::Render);
 		SKSEMenuFramework::AddSectionItem("Unlock Spell", SpellPanel::Render);
@@ -210,7 +210,7 @@ namespace UI
 		ImGuiMCP::PushItemWidth(300.0F);
 		ImGuiMCP::Toggle("Know the spell Manipulate Lock", &spell::enabled);
 		HelpMarker("On: the spell is added to your spell book (Alteration, cost 30). Off: it is taken away again.");
-		if (!s.spellResolved) { ImGuiMCP::TextWrapped("ApocryphaLockOverhaul.esl is not loaded - enable it in your mod manager or the spell cannot exist."); }
+		if (!s.spellResolved) { ImGuiMCP::TextWrapped("ApocryphaLockInteractionOverhaul.esl is not loaded - enable it in your mod manager or the spell cannot exist."); }
 		else { ImGuiMCP::TextDisabled("%s", s.spellKnown ? "You know Manipulate Lock." : "You do not know Manipulate Lock right now."); }
 		int mode = static_cast<int>(std::min<std::uint32_t>(spell::allowed, 2u));
 		if (ImGuiMCP::Combo("Spells that work on locks", &mode, kSpellModes, 3)) { spell::allowed = static_cast<std::uint32_t>(mode); }
@@ -285,7 +285,7 @@ namespace UI
 		ImGuiMCP::PushItemWidth(260.0F);
 		int level = std::clamp(static_cast<int>(debug::logLevel), 0, kLogLevelCount - 1);
 		if (ImGuiMCP::Combo("Log level", &level, kLogLevelNames, kLogLevelCount)) { debug::logLevel = static_cast<std::uint32_t>(level); ApplyLogLevel(); }
-		HelpMarker("Applies immediately. The log is at Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockOverhaul.log.");
+		HelpMarker("Applies immediately. The log is at Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log.");
 		ImGuiMCP::SeparatorText("Live");
 		ImGuiMCP::Text("Locks opened by this mod this session: %llu", static_cast<unsigned long long>(s.opened));
 		ImGuiMCP::Text("Frozen locks: %u", s.frozenCount);

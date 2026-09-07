@@ -1,6 +1,6 @@
 #pragma once
 
-// Apocrypha Lock Overhaul - the Apocrypha Menu Framework page, one section per feature.
+// ApocryphaRealm Lock Interaction Overhaul - the Apocrypha Menu Framework page, one section per feature.
 
 namespace UI
 {

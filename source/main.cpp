@@ -1,7 +1,7 @@
-// Apocrypha Lock Overhaul - own code, MIT (2026-09-06). Lock skill requirements, auto-pick,
+// ApocryphaRealm Lock Interaction Overhaul - own code, MIT (2026-09-06). Lock skill requirements, auto-pick,
 // smashing locks with a weapon, an unlock spell with frost and fire tricks, crime for all of it,
 // and Remember Lockpick Angle's kept angle - an original rebuild of the Lock Overhaul idea, on
-// the Apocrypha Menu Framework. The spell is a SPEL record in the tiny ApocryphaLockOverhaul.esl.
+// the Apocrypha Menu Framework. The spell is a SPEL record in the tiny ApocryphaLockInteractionOverhaul.esl.
 #include "PCH.h"
 
 #include "DevBenchTool.h"
@@ -39,12 +39,12 @@ namespace
 SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 {
 	SKSE::Init(a_skse);
-	SKSE::log::init("ApocryphaLockOverhaul");
+	SKSE::log::init("ApocryphaLockInteractionOverhaul");
 
-	settings::Init("ApocryphaLockOverhaul.ini");
+	settings::Init("ApocryphaLockInteractionOverhaul.ini");
 	settings::ApplyLogLevel();
 
-	logger::info("Apocrypha Lock Overhaul {} loading",
+	logger::info("ApocryphaRealm Lock Interaction Overhaul {} loading",
 				 SKSE::PluginDeclaration::GetSingleton()->GetVersion().string("."));
 	logger::info("Build line: {}", RUNTIME_LINE == 17 ? "Skyrim 1.7.x" : "SE 1.5.97 / AE 1.6.x");
 

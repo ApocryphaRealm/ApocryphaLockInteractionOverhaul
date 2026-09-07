@@ -1,6 +1,6 @@
-# Apocrypha Lock Overhaul
+# ApocryphaRealm Lock Interaction Overhaul
 
-Version 1.0.0
+Version 1.0.1
 
 An original SKSE plugin (MIT) that gives locks skill requirements and new ways to open them, with
 every setting on an Apocrypha Menu Framework page. It is a from-scratch rebuild of what the
@@ -25,15 +25,15 @@ Key-required locks are never touched. The whole mod stands down while `Lock Over
 
 ## Files
 
-`SKSE\Plugins\ApocryphaLockOverhaul.dll` (+ `.pdb`, `.ini`) and `ApocryphaLockOverhaul.esl` - a
+`SKSE\Plugins\ApocryphaLockInteractionOverhaul.dll` (+ `.pdb`, `.ini`) and `ApocryphaLockInteractionOverhaul.esl` - a
 two-record light plugin (the spell and its effect), no scripts, no overrides. The log is
-`Documents\My Games\Skyrim Special Edition\SKSE\ApocryphaLockOverhaul.log`.
+`Documents\My Games\Skyrim Special Edition\SKSE\ApocryphaLockInteractionOverhaul.log`.
 
 ## Building
 
 `configure.bat` then `build.bat` (SE 1.5.97 / AE 1.6.x line); `configure17.bat` / `build17.bat`
 for the Skyrim 1.7.x line. Both discover the toolchain with `find-msvc.bat` and need `VCPKG_ROOT`.
-`python tools\Build-ApocryphaLockOverhaulEsl.py` writes the ESL into `dist\`.
+`python tools\Build-ApocryphaLockInteractionOverhaulEsl.py` writes the ESL into `dist\`.
 
 ## Credits
 

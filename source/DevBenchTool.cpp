@@ -190,22 +190,22 @@ namespace DevBenchTool
 		DevBenchAPI::IDevBenchInterface001* devBench = DevBenchAPI::GetDevBenchInterface001();
 		if (!devBench)
 		{
-			if (a_lastAttempt) { logger::info("DevBench not detected; skipping the \"alo.control\" tool"); }
+			if (a_lastAttempt) { logger::info("DevBench not detected; skipping the \"alio.control\" tool"); }
 			else { logger::debug("DevBench not detected yet; will retry at the next message"); }
 			return;
 		}
 		constexpr const char* descriptor =
 			"{"
-			"\"description\":\"Apocrypha Lock Overhaul live state and controls. No op: settings + runtime + the lock under the crosshair. "
+			"\"description\":\"ApocryphaRealm Lock Interaction Overhaul live state and controls. No op: settings + runtime + the lock under the crosshair. "
 			"Switches: requirements:<0|1>, autopick:<0|1>, openafter:<0|1>, smash:<0|1>, spell:<0|1>, pickangle:<0|1>, crime:<0|1>, skillgain:<0|1>, notify:<0|1>; "
 			"weapons:<0-2>, spells:<0-2>, perk:<0-7> as string values. op=look: the crosshair lock. op=simulate with ref (hex form id, or the crosshair) and how "
 			"(pick|smash1|smash2|spell|fire|shock|frost|thaw) runs the same decision path the game events run. op=save, op=reload, op=deactivate.\","
 			"\"inputSchema\":{\"type\":\"object\",\"properties\":{\"op\":{\"type\":\"string\"},\"ref\":{\"type\":\"string\"},\"how\":{\"type\":\"string\"}}},"
 			"\"readOnly\":false"
 			"}";
-		if (devBench->RegisterTool("alo.control", descriptor, &ControlTool, nullptr))
+		if (devBench->RegisterTool("alio.control", descriptor, &ControlTool, nullptr))
 		{
-			logger::info("Registered \"alo.control\" with DevBench (build {})", devBench->GetBuildNumber());
+			logger::info("Registered \"alio.control\" with DevBench (build {})", devBench->GetBuildNumber());
 			registered = true;
 		}
 	}

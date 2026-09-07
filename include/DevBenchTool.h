@@ -1,6 +1,6 @@
 #pragma once
 
-// Apocrypha Lock Overhaul - the DevBench "alo.control" tool: live state, every switch, the lock
+// ApocryphaRealm Lock Interaction Overhaul - the DevBench "alio.control" tool: live state, every switch, the lock
 // under the crosshair, and a simulate op that runs the same decision path the game events run.
 
 namespace DevBenchTool

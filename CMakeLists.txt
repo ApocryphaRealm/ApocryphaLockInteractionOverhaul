@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.21)
+﻿cmake_minimum_required(VERSION 3.21)
 
 project(
-	ApocryphaLockOverhaul
-	VERSION 1.0.0
+	ApocryphaLockInteractionOverhaul
+	VERSION 1.0.1
 	LANGUAGES CXX
 )
 

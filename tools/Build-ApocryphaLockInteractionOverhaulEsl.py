@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 r"""
-Build-ApocryphaLockOverhaulEsl.py - authors ApocryphaLockOverhaul.esl, the carrier for the unlock
+Build-ApocryphaLockInteractionOverhaulEsl.py - authors ApocryphaLockInteractionOverhaul.esl, the carrier for the unlock
 spell. Two NEW records, one master (Skyrim.esm), light-flagged, no vanilla overrides, no scripts:
 
     0x800  MGEF  ALO_ManipulateLockEffect   Script-archetype effect with NO script: aimed, fire-and-forget,
                                             Alteration, the vanilla Paralyze projectile so it can hit a chest
-    0x801  SPEL  ALO_ManipulateLock         the spell "Manipulate Lock" (DLL contract: LookupForm(0x801, "ApocryphaLockOverhaul.esl"))
+    0x801  SPEL  ALO_ManipulateLock         the spell "Manipulate Lock" (DLL contract: LookupForm(0x801, "ApocryphaLockInteractionOverhaul.esl"))
 
-Everything the spell DOES lives in ApocryphaLockOverhaul.dll (it watches TESHitEvent for its own
+Everything the spell DOES lives in ApocryphaLockInteractionOverhaul.dll (it watches TESHitEvent for its own
 spell); the plugin only has to make the spell exist. Byte-level writer on the primitives proven by
 this project's earlier plugin builders (Potion of Clarity); every vanilla FormID below was read out
 of the live Skyrim.esm by EDID on 2026-09-06, not guessed. The MGEF DATA layout was copied from
 the vanilla ParalysisFFAimed effect (0x0001EA6E) and re-pointed.
 
-Usage:  python Build-ApocryphaLockOverhaulEsl.py [out.esl]
+Usage:  python Build-ApocryphaLockInteractionOverhaulEsl.py [out.esl]
 """
 import struct, sys, os
 
@@ -121,14 +121,14 @@ def build():
     hedr = struct.pack('<fiI', 1.7, num_records, 0x802)
     tes4_body = (sub('HEDR', hedr)
                  + sub('CNAM', b'ApocryphaRealm\x00')
-                 + sub('SNAM', b'Apocrypha Lock Overhaul - spell carrier. All behaviour is in ApocryphaLockOverhaul.dll.\x00')
+                 + sub('SNAM', b'ApocryphaRealm Lock Interaction Overhaul - spell carrier. All behaviour is in ApocryphaLockInteractionOverhaul.dll.\x00')
                  + sub('MAST', b'Skyrim.esm\x00') + sub('DATA', b'\x00' * 8))
     tes4 = rec('TES4', 0, tes4_body, flags=0x00000200)  # Light
     return tes4 + body
 
 
 if __name__ == '__main__':
-    out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'dist', 'ApocryphaLockOverhaul.esl')
+    out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'dist', 'ApocryphaLockInteractionOverhaul.esl')
     blob = build()
     os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
     open(out, 'wb').write(blob)
