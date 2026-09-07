@@ -6,6 +6,7 @@
 #include "Locks.h"
 #include "Settings.h"
 #include "utils/Logger.h"
+#include "utils/Strings.h"
 
 #include <cstdlib>
 #include <format>
@@ -99,6 +100,7 @@ namespace DevBenchTool
 
 			if (has("save")) { const bool ok = settings::Save(); reply(std::format(R"({{"ok":{},"op":"save"}})", ok)); return; }
 			if (has("reload")) { const bool ok = settings::Reload(); Locks::ApplySettings(); reply(std::format(R"({{"ok":{},"op":"reload"}})", ok)); return; }
+			if (has("strings")) { reply(std::format(R"({{"ok":true,"op":"strings","strings":{}}})", strings::StatusJson())); return; }
 			if (has("deactivate")) { if (auto* t = SKSE::GetTaskInterface()) { t->AddTask([]() { Locks::DeactivateAll(); }); } reply(R"({"ok":true,"op":"deactivate"})"); return; }
 			if (has("look")) { reply(std::format(R"({{"ok":true,"op":"look","lock":{}}})", LockJson(Locks::LookingAt()))); return; }
 			if (has("describe"))
@@ -199,7 +201,7 @@ namespace DevBenchTool
 			"\"description\":\"ApocryphaRealm Lock Interaction Overhaul live state and controls. No op: settings + runtime + the lock under the crosshair. "
 			"Switches: requirements:<0|1>, autopick:<0|1>, openafter:<0|1>, smash:<0|1>, spell:<0|1>, pickangle:<0|1>, crime:<0|1>, skillgain:<0|1>, notify:<0|1>; "
 			"weapons:<0-2>, spells:<0-2>, perk:<0-7> as string values. op=look: the crosshair lock. op=simulate with ref (hex form id, or the crosshair) and how "
-			"(pick|smash1|smash2|spell|fire|shock|frost|thaw) runs the same decision path the game events run. op=save, op=reload, op=deactivate.\","
+			"(pick|smash1|smash2|spell|fire|shock|frost|thaw) runs the same decision path the game events run. op=save, op=reload, op=deactivate. op=strings reports the active language, source and loaded translation count.\","
 			"\"inputSchema\":{\"type\":\"object\",\"properties\":{\"op\":{\"type\":\"string\"},\"ref\":{\"type\":\"string\"},\"how\":{\"type\":\"string\"}}},"
 			"\"readOnly\":false"
 			"}";
