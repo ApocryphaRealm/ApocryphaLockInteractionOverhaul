@@ -1,8 +1,8 @@
 # ApocryphaRealm Lock Interaction Overhaul
 
-Version 1.0.1
+Version 1.0.3
 
-An original SKSE plugin (MIT) that gives locks skill requirements and new ways to open them, with
+An original SKSE plugin (GPL-3.0-or-later) that gives locks skill requirements and new ways to open them, with
 every setting on an Apocrypha Menu Framework page. It is a from-scratch rebuild of what the
 Papyrus mod *Lock Overhaul* does - inspiration only; no file, script or asset from it is used -
 plus *Remember Lockpick Angle*'s kept angle, whose MIT mechanism is credited below.
@@ -41,5 +41,12 @@ for the Skyrim 1.7.x line. Both discover the toolchain with `find-msvc.bat` and 
   as described on its page. Nothing of it is used.
 - **Remember Lockpick Angle** by Sayuri ("Umgak"), MIT - the pick-angle mechanism (skipping the
   game's reset of the pick angle when a pick breaks) is reimplemented on CommonLibSSE-NG from its
-  MIT source; the MIT notice is preserved in `LICENSE`.
+  MIT source; the MIT notice is preserved in `THIRD_PARTY_NOTICES.md`.
 - CommonLibSSE-NG, SKSE, and the Apocrypha Menu Framework.
+
+## Licence
+
+GPL-3.0-or-later - see `LICENSE` and `NOTICE.md`. The Skyrim 1.7.x build links CommonLibSSE-NG 7.2.0
+(GPL-3.0-or-later with its exceptions), and the settings pages use SKSE Menu Framework 3's consumer header
+(GPL-3.0), so the whole work is GPL. Components under other licences, with their notices, are listed in
+`THIRD_PARTY_NOTICES.md`. Up to 1.0.2 the repository carried an MIT licence in error.

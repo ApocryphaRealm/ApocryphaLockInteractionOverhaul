@@ -7,6 +7,11 @@ Rule 61: this mod's own history, kept beside the code it describes.
 > number; at `.9` the MINOR rolls. The next number is LAST WORKING + 1; failed/scratch/
 > untested numbers are reused. Numbers come from version-ledger.ps1 + set-version.ps1.
 
+## 1.0.3 - 2026-09-13 - untested
+
+### Changed
+- Relicensed the whole mod under GPL-3.0-or-later, as CommonLibSSE-NG 7.2.0 (linked by the Skyrim 1.7.x build) and the SKSE Menu Framework 3 consumer header require (Nexus moderation, 2026-09-13). `LICENSE` is now the GPL-3.0 text; `NOTICE.md` carries the copyright and licence notice; `THIRD_PARTY_NOTICES.md` keeps the notices of the MIT components (the SE/AE CommonLib, the DevBench consumer API, Remember Lockpick Angle's mechanism). The erroneous MIT licence is removed from the source, the manifests and the DLL's version resource. No gameplay change.
+
 ## 1.0.2 - 2026-09-07 - working
 
 ### Added
