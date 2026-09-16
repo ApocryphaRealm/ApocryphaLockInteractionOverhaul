@@ -28,4 +28,4 @@ from 1.0.3 the whole work is GPL-3.0-or-later.
 The components under other licences that this work includes are listed, with their notices, in
 `THIRD_PARTY_NOTICES.md`.
 
-Source code: https://github.com/ApocryphaRealm/ApocryphaLockInteractionOverhaul
+Source code: https://github.com/ApocryphaRealm/LockInteractionOverhaul

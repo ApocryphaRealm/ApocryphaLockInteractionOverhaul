@@ -22,7 +22,7 @@ namespace
 			DevBenchTool::Init(false);
 			break;
 		case SKSE::MessagingInterface::kDataLoaded:
-			strings::Configure("ApocryphaLockInteractionOverhaul");
+			strings::Configure("LockInteractionOverhaul");
 			UI::Register();
 			Locks::Install();
 			DevBenchTool::Init(true);
@@ -41,9 +41,9 @@ namespace
 SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 {
 	SKSE::Init(a_skse);
-	SKSE::log::init("ApocryphaLockInteractionOverhaul");
+	SKSE::log::init("LockInteractionOverhaul");
 
-	settings::Init("ApocryphaLockInteractionOverhaul.ini");
+	settings::Init("LockInteractionOverhaul.ini");
 	settings::ApplyLogLevel();
 
 	logger::info("ApocryphaRealm Lock Interaction Overhaul {} loading",

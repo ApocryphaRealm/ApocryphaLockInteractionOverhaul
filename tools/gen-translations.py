@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""gen-translations.py - builds the eleven ApocryphaLockInteractionOverhaul_<language>.txt files.
+"""gen-translations.py - builds the eleven LockInteractionOverhaul_<language>.txt files.
 
 The English key list is extracted from the PATCHED source/UI.cpp, so it can never drift from the
 code. Two shapes are read:
@@ -9,7 +9,7 @@ code. Two shapes are read:
     names, whose entries are looked up by index at draw time rather than by a literal TR call.
 
 The other ten languages are this project's own translations of that list, held below as one dict
-per key. Writes REPO/dist/Interface/Translations/ApocryphaLockInteractionOverhaul_<language>.txt
+per key. Writes REPO/dist/Interface/Translations/LockInteractionOverhaul_<language>.txt
 for english + the owner's ten languages: UTF-16LE with a BOM, one "$key<TAB>text" record per
 line, a literal "\\n" for an embedded line break, CRLF records - the SKSE/SkyUI shape the
 Apocrypha Menu Framework's Strings.cpp reads.
@@ -27,7 +27,7 @@ import os
 import re
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STEM = "ApocryphaLockInteractionOverhaul"
+STEM = "LockInteractionOverhaul"
 LANGS = ["english", "japanese", "korean", "chinese", "russian",
          "german", "french", "spanish", "italian", "polish", "czech"]
 OTHERS = LANGS[1:]
@@ -815,16 +815,16 @@ TRANSLATIONS["ALIO_LogLevel"] = T(
     "Niveau de journal", "Nivel de registro", "Livello del log", "Poziom dziennika",
     "Úroveň logu")
 TRANSLATIONS["ALIO_HelpLogLevel"] = T(
-    "即座に適用されます。ログは Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log にあります。",
-    "즉시 적용됩니다. 로그 위치는 Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log 입니다.",
-    "立即生效。日志位于 Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log。",
-    "Применяется сразу. Журнал находится в Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log.",
-    "Wird sofort wirksam. Das Log liegt unter Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log.",
-    "S'applique immédiatement. Le journal se trouve dans Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log.",
-    "Se aplica de inmediato. El registro está en Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log.",
-    "Si applica subito. Il log si trova in Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log.",
-    "Działa natychmiast. Dziennik znajduje się w Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log.",
-    "Použije se okamžitě. Log je v Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log.")
+    "即座に適用されます。ログは Documents\\My Games\\Skyrim Special Edition\\SKSE\\LockInteractionOverhaul.log にあります。",
+    "즉시 적용됩니다. 로그 위치는 Documents\\My Games\\Skyrim Special Edition\\SKSE\\LockInteractionOverhaul.log 입니다.",
+    "立即生效。日志位于 Documents\\My Games\\Skyrim Special Edition\\SKSE\\LockInteractionOverhaul.log。",
+    "Применяется сразу. Журнал находится в Documents\\My Games\\Skyrim Special Edition\\SKSE\\LockInteractionOverhaul.log.",
+    "Wird sofort wirksam. Das Log liegt unter Documents\\My Games\\Skyrim Special Edition\\SKSE\\LockInteractionOverhaul.log.",
+    "S'applique immédiatement. Le journal se trouve dans Documents\\My Games\\Skyrim Special Edition\\SKSE\\LockInteractionOverhaul.log.",
+    "Se aplica de inmediato. El registro está en Documents\\My Games\\Skyrim Special Edition\\SKSE\\LockInteractionOverhaul.log.",
+    "Si applica subito. Il log si trova in Documents\\My Games\\Skyrim Special Edition\\SKSE\\LockInteractionOverhaul.log.",
+    "Działa natychmiast. Dziennik znajduje się w Documents\\My Games\\Skyrim Special Edition\\SKSE\\LockInteractionOverhaul.log.",
+    "Použije se okamžitě. Log je v Documents\\My Games\\Skyrim Special Edition\\SKSE\\LockInteractionOverhaul.log.")
 TRANSLATIONS["ALIO_LiveHeader"] = T(
     "現在の状態", "실시간", "实时状态", "В реальном времени", "Live",
     "En direct", "En vivo", "In tempo reale", "Na żywo", "Živě")

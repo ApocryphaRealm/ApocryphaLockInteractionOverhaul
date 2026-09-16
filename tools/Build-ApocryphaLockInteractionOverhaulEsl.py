@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 r"""
-Build-ApocryphaLockInteractionOverhaulEsl.py - authors LockInteractionOverhaul.esp, the carrier for the unlock
+Build-LockInteractionOverhaulEsl.py - authors LockInteractionOverhaul.esp, the carrier for the unlock
 spell. Two NEW records, one master (Skyrim.esm), light-flagged, no vanilla overrides, no scripts:
 
     0x800  MGEF  ALO_ManipulateLockEffect   Script-archetype effect with NO script: aimed, fire-and-forget,
                                             Alteration, the vanilla Paralyze projectile so it can hit a chest
     0x801  SPEL  ALO_ManipulateLock         the spell "Manipulate Lock" (DLL contract: LookupForm(0x801, "LockInteractionOverhaul.esp"))
 
-Everything the spell DOES lives in ApocryphaLockInteractionOverhaul.dll (it watches TESHitEvent for its own
+Everything the spell DOES lives in LockInteractionOverhaul.dll (it watches TESHitEvent for its own
 spell); the plugin only has to make the spell exist. Byte-level writer on the primitives proven by
 this project's earlier plugin builders (Potion of Clarity); every vanilla FormID below was read out
 of the live Skyrim.esm by EDID on 2026-09-06, not guessed. The MGEF DATA layout was copied from
 the vanilla ParalysisFFAimed effect (0x0001EA6E) and re-pointed.
 
-Usage:  python Build-ApocryphaLockInteractionOverhaulEsl.py [out.esl]
+Usage:  python Build-LockInteractionOverhaulEsl.py [out.esl]
 """
 import struct, sys, os
 
@@ -121,7 +121,7 @@ def build():
     hedr = struct.pack('<fiI', 1.7, num_records, 0x802)
     tes4_body = (sub('HEDR', hedr)
                  + sub('CNAM', b'ApocryphaRealm\x00')
-                 + sub('SNAM', b'ApocryphaRealm Lock Interaction Overhaul - spell carrier. All behaviour is in ApocryphaLockInteractionOverhaul.dll.\x00')
+                 + sub('SNAM', b'ApocryphaRealm Lock Interaction Overhaul - spell carrier. All behaviour is in LockInteractionOverhaul.dll.\x00')
                  + sub('MAST', b'Skyrim.esm\x00') + sub('DATA', b'\x00' * 8))
     tes4 = rec('TES4', 0, tes4_body, flags=0x00000200)  # Light
     return tes4 + body

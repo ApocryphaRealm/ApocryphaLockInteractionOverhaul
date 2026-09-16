@@ -336,7 +336,7 @@ namespace UI
 		ImGuiMCP::PushItemWidth(260.0F);
 		int level = std::clamp(static_cast<int>(debug::logLevel), 0, kLogLevelCount - 1);
 		if (ComboTR(strings::TR("ALIO_LogLevel", "Log level"), &level, kLogLevelKeys, kLogLevelLabels, kLogLevelCount)) { debug::logLevel = static_cast<std::uint32_t>(level); ApplyLogLevel(); }
-		HelpMarker(strings::TR("ALIO_HelpLogLevel", "Applies immediately. The log is at Documents\\My Games\\Skyrim Special Edition\\SKSE\\ApocryphaLockInteractionOverhaul.log."));
+		HelpMarker(strings::TR("ALIO_HelpLogLevel", "Applies immediately. The log is at Documents\\My Games\\Skyrim Special Edition\\SKSE\\LockInteractionOverhaul.log."));
 		ImGuiMCP::SeparatorText(strings::TR("ALIO_LiveHeader", "Live"));
 		ImGuiMCP::Text(strings::TR("ALIO_OpenedCount", "Locks opened by this mod this session: %llu"), static_cast<unsigned long long>(s.opened));
 		ImGuiMCP::Text(strings::TR("ALIO_FrozenCount", "Frozen locks: %u"), s.frozenCount);

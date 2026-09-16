@@ -25,15 +25,15 @@ Key-required locks are never touched. The whole mod stands down while `Lock Over
 
 ## Files
 
-`SKSE\Plugins\ApocryphaLockInteractionOverhaul.dll` (+ `.pdb`, `.ini`) and `ApocryphaLockInteractionOverhaul.esl` - a
+`SKSE\Plugins\LockInteractionOverhaul.dll` (+ `.pdb`, `.ini`) and `LockInteractionOverhaul.esp` - a
 two-record light plugin (the spell and its effect), no scripts, no overrides. The log is
-`Documents\My Games\Skyrim Special Edition\SKSE\ApocryphaLockInteractionOverhaul.log`.
+`Documents\My Games\Skyrim Special Edition\SKSE\LockInteractionOverhaul.log`.
 
 ## Building
 
 `configure.bat` then `build.bat` (SE 1.5.97 / AE 1.6.x line); `configure17.bat` / `build17.bat`
 for the Skyrim 1.7.x line. Both discover the toolchain with `find-msvc.bat` and need `VCPKG_ROOT`.
-`python tools\Build-ApocryphaLockInteractionOverhaulEsl.py` writes the ESL into `dist\`.
+`python tools\Build-LockInteractionOverhaulEsl.py` writes the ESL into `dist\`.
 
 ## Credits
 

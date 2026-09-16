@@ -1,4 +1,4 @@
-# ApocryphaLockInteractionOverhaul - changelog
+# LockInteractionOverhaul - changelog
 
 Rule 61: this mod's own history, kept beside the code it describes.
 
@@ -15,12 +15,12 @@ Rule 61: this mod's own history, kept beside the code it describes.
 ## 1.0.2 - 2026-09-07 - working
 
 ### Added
-- The settings pages are shown in the game's language: eleven translation files (Interface\Translations\ApocryphaLockInteractionOverhaul_<language>.txt) - Japanese, Korean, Chinese, Russian, German, French, Spanish, Italian, Polish, Czech and English - and every page follows the Apocrypha Menu Framework's Language setting (1.6.5 or newer; English on older versions). The framework is looked up by its sort-first name first. alio.control gained op=strings (active language, source and loaded count).
+- The settings pages are shown in the game's language: eleven translation files (Interface\Translations\LockInteractionOverhaul_<language>.txt) - Japanese, Korean, Chinese, Russian, German, French, Spanish, Italian, Polish, Czech and English - and every page follows the Apocrypha Menu Framework's Language setting (1.6.5 or newer; English on older versions). The framework is looked up by its sort-first name first. alio.control gained op=strings (active language, source and loaded count).
 
 ## 1.0.1 - 2026-09-06 - working
 
 ### Changed
-- Renamed to ApocryphaRealm Lock Interaction Overhaul (the owner's name). The binary, INI, plugin file, log and DevBench tool follow: ApocryphaLockInteractionOverhaul.dll / .ini / .esl / .log, tool alio.control. The spell and effect records are unchanged; the plugin file's new name is the only thing a save would notice, and 1.0.0 was never published.
+- Renamed to ApocryphaRealm Lock Interaction Overhaul (the owner's name). The binary, INI, plugin file, log and DevBench tool follow: LockInteractionOverhaul.dll / .ini / .esl / .log, tool alio.control. The spell and effect records are unchanged; the plugin file's new name is the only thing a save would notice, and 1.0.0 was never published.
 
 ## 1.0.0 - 2026-09-06 - working
 

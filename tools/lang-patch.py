@@ -6,7 +6,7 @@ Applies the consumer-side mechanism from the translation rollout plan, section 2
 
   * include/utils/Strings.h is vendored separately (copied from the template, unchanged);
   * include/SKSEMenuFramework.h gets "!ApocryphaMenuFramework" as the FIRST module lookup;
-  * source/main.cpp calls strings::Configure("ApocryphaLockInteractionOverhaul") at kDataLoaded;
+  * source/main.cpp calls strings::Configure("LockInteractionOverhaul") at kDataLoaded;
   * source/UI.cpp calls strings::Tick() as the first line of all SIX page render functions and
     routes every drawn literal through strings::TR("ALIO_...", "English");
   * source/DevBenchTool.cpp gains an op=strings returning strings::StatusJson().
@@ -95,7 +95,7 @@ def patch_skse_menu_framework_h():
 def patch_main_cpp():
     path = os.path.join(REPO, "source", "main.cpp")
     text = read(path)
-    if 'strings::Configure("ApocryphaLockInteractionOverhaul")' in text:
+    if 'strings::Configure("LockInteractionOverhaul")' in text:
         print("  main.cpp: already patched")
         return
     pairs = [
@@ -103,7 +103,7 @@ def patch_main_cpp():
          '#include "utils/Logger.h"\r\n#include "utils/Strings.h"'),
         ('\t\tcase SKSE::MessagingInterface::kDataLoaded:\r\n\t\t\tUI::Register();',
          '\t\tcase SKSE::MessagingInterface::kDataLoaded:\r\n'
-         '\t\t\tstrings::Configure("ApocryphaLockInteractionOverhaul");\r\n'
+         '\t\t\tstrings::Configure("LockInteractionOverhaul");\r\n'
          '\t\t\tUI::Register();'),
     ]
     text = apply_all(text, pairs, "main.cpp")
@@ -428,8 +428,8 @@ UI_PAIRS = [
      '\t\tstrings::Tick();\r\n\t\tusing namespace settings;\r\n\t\tconst auto s = Locks::GetState();\r\n\t\tImGuiMCP::PushItemWidth(260.0F);'),
     ('\t\tif (ImGuiMCP::Combo("Log level", &level, kLogLevelNames, kLogLevelCount)) { debug::logLevel = static_cast<std::uint32_t>(level); ApplyLogLevel(); }',
      '\t\tif (ComboTR(strings::TR("ALIO_LogLevel", "Log level"), &level, kLogLevelKeys, kLogLevelLabels, kLogLevelCount)) { debug::logLevel = static_cast<std::uint32_t>(level); ApplyLogLevel(); }'),
-    ('\t\tHelpMarker("Applies immediately. The log is at Documents\\\\My Games\\\\Skyrim Special Edition\\\\SKSE\\\\ApocryphaLockInteractionOverhaul.log.");',
-     '\t\tHelpMarker(strings::TR("ALIO_HelpLogLevel", "Applies immediately. The log is at Documents\\\\My Games\\\\Skyrim Special Edition\\\\SKSE\\\\ApocryphaLockInteractionOverhaul.log."));'),
+    ('\t\tHelpMarker("Applies immediately. The log is at Documents\\\\My Games\\\\Skyrim Special Edition\\\\SKSE\\\\LockInteractionOverhaul.log.");',
+     '\t\tHelpMarker(strings::TR("ALIO_HelpLogLevel", "Applies immediately. The log is at Documents\\\\My Games\\\\Skyrim Special Edition\\\\SKSE\\\\LockInteractionOverhaul.log."));'),
     ('ImGuiMCP::SeparatorText("Live");',
      'ImGuiMCP::SeparatorText(strings::TR("ALIO_LiveHeader", "Live"));'),
     ('\t\tImGuiMCP::Text("Locks opened by this mod this session: %llu", static_cast<unsigned long long>(s.opened));',
