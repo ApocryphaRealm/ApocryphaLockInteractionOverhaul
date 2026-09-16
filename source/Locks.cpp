@@ -18,8 +18,8 @@ namespace Locks
 {
 	namespace
 	{
-		// The contract with ApocryphaLockInteractionOverhaul.esl (tools/Build-ApocryphaLockInteractionOverhaulEsl.py).
-		constexpr const char* kPluginFileName = "ApocryphaLockInteractionOverhaul.esl";
+		// The contract with LockInteractionOverhaul.esp (tools/Build-ApocryphaLockInteractionOverhaulEsl.py).
+		constexpr const char* kPluginFileName = "LockInteractionOverhaul.esp";
 		constexpr RE::FormID kEffectLocalFormID = 0x800;
 		constexpr RE::FormID kSpellLocalFormID = 0x801;
 

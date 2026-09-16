@@ -1,7 +1,7 @@
 // ApocryphaRealm Lock Interaction Overhaul - own code, GPL-3.0-or-later (2026-09-06; relicensed from MIT 2026-09-13, see NOTICE.md). Lock skill requirements, auto-pick,
 // smashing locks with a weapon, an unlock spell with frost and fire tricks, crime for all of it,
 // and Remember Lockpick Angle's kept angle - an original rebuild of the Lock Overhaul idea, on
-// the Apocrypha Menu Framework. The spell is a SPEL record in the tiny ApocryphaLockInteractionOverhaul.esl.
+// the Apocrypha Menu Framework. The spell is a SPEL record in the tiny LockInteractionOverhaul.esp.
 #include "PCH.h"
 
 #include "DevBenchTool.h"

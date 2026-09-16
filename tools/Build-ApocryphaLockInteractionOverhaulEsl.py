@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 r"""
-Build-ApocryphaLockInteractionOverhaulEsl.py - authors ApocryphaLockInteractionOverhaul.esl, the carrier for the unlock
+Build-ApocryphaLockInteractionOverhaulEsl.py - authors LockInteractionOverhaul.esp, the carrier for the unlock
 spell. Two NEW records, one master (Skyrim.esm), light-flagged, no vanilla overrides, no scripts:
 
     0x800  MGEF  ALO_ManipulateLockEffect   Script-archetype effect with NO script: aimed, fire-and-forget,
                                             Alteration, the vanilla Paralyze projectile so it can hit a chest
-    0x801  SPEL  ALO_ManipulateLock         the spell "Manipulate Lock" (DLL contract: LookupForm(0x801, "ApocryphaLockInteractionOverhaul.esl"))
+    0x801  SPEL  ALO_ManipulateLock         the spell "Manipulate Lock" (DLL contract: LookupForm(0x801, "LockInteractionOverhaul.esp"))
 
 Everything the spell DOES lives in ApocryphaLockInteractionOverhaul.dll (it watches TESHitEvent for its own
 spell); the plugin only has to make the spell exist. Byte-level writer on the primitives proven by
@@ -128,7 +128,7 @@ def build():
 
 
 if __name__ == '__main__':
-    out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'dist', 'ApocryphaLockInteractionOverhaul.esl')
+    out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'dist', 'LockInteractionOverhaul.esp')
     blob = build()
     os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
     open(out, 'wb').write(blob)

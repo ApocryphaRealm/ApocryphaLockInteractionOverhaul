@@ -16,7 +16,7 @@ Apocrypha Menu Framework's Strings.cpp reads.
 
 Untranslated on purpose, in every language: the mod's own spell name (Manipulate Lock - the ESL
 record is English, so the page must match the spell book), file names (Lock Overhaul.esp,
-RememberLockpickAngle.dll, ApocryphaLockInteractionOverhaul.esl / .log), the log path, INI keys
+RememberLockpickAngle.dll, LockInteractionOverhaul.esp / .log), the log path, INI keys
 (sPerkPlugin, uPerkFormID), the game setting fSkillUsageLockPick, and the page name Unlock Spell
 (page names are the framework's registry identity and stay English).
 
@@ -469,16 +469,16 @@ TRANSLATIONS["ALIO_HelpSpellEnabled"] = T(
     "Wł.: zaklęcie zostaje dodane do księgi zaklęć (Zmiana, koszt 30). Wył.: zostaje ponownie usunięte.",
     "Zapnuto: kouzlo se přidá do tvé knihy kouzel (Proměny, cena 30). Vypnuto: opět se odebere.")
 TRANSLATIONS["ALIO_EslMissing"] = T(
-    "ApocryphaLockInteractionOverhaul.esl が読み込まれていません ― MOD管理ソフトで有効にしてください。有効でないと呪文は存在できません。",
-    "ApocryphaLockInteractionOverhaul.esl이 로드되지 않았습니다 ― 모드 관리자에서 활성화하세요. 그렇지 않으면 주문이 존재할 수 없습니다.",
-    "未加载 ApocryphaLockInteractionOverhaul.esl ― 请在模组管理器中启用，否则该法术无法存在。",
-    "ApocryphaLockInteractionOverhaul.esl не загружен — включите его в менеджере модов, иначе заклинание не может существовать.",
-    "ApocryphaLockInteractionOverhaul.esl ist nicht geladen – aktiviere es in deinem Mod-Manager, sonst kann der Zauber nicht existieren.",
-    "ApocryphaLockInteractionOverhaul.esl n'est pas chargé – activez-le dans votre gestionnaire de mods, sinon le sort ne peut pas exister.",
-    "ApocryphaLockInteractionOverhaul.esl no está cargado: actívalo en tu gestor de mods o el hechizo no puede existir.",
-    "ApocryphaLockInteractionOverhaul.esl non è caricato: attivalo nel tuo gestore di mod, altrimenti l'incantesimo non può esistere.",
-    "ApocryphaLockInteractionOverhaul.esl nie jest wczytany – włącz go w menedżerze modyfikacji, inaczej zaklęcie nie może istnieć.",
-    "ApocryphaLockInteractionOverhaul.esl není načten – zapni ho ve správci modů, jinak kouzlo nemůže existovat.")
+    "LockInteractionOverhaul.esp が読み込まれていません ― MOD管理ソフトで有効にしてください。有効でないと呪文は存在できません。",
+    "LockInteractionOverhaul.esp이 로드되지 않았습니다 ― 모드 관리자에서 활성화하세요. 그렇지 않으면 주문이 존재할 수 없습니다.",
+    "未加载 LockInteractionOverhaul.esp ― 请在模组管理器中启用，否则该法术无法存在。",
+    "LockInteractionOverhaul.esp не загружен — включите его в менеджере модов, иначе заклинание не может существовать.",
+    "LockInteractionOverhaul.esp ist nicht geladen – aktiviere es in deinem Mod-Manager, sonst kann der Zauber nicht existieren.",
+    "LockInteractionOverhaul.esp n'est pas chargé – activez-le dans votre gestionnaire de mods, sinon le sort ne peut pas exister.",
+    "LockInteractionOverhaul.esp no está cargado: actívalo en tu gestor de mods o el hechizo no puede existir.",
+    "LockInteractionOverhaul.esp non è caricato: attivalo nel tuo gestore di mod, altrimenti l'incantesimo non può esistere.",
+    "LockInteractionOverhaul.esp nie jest wczytany – włącz go w menedżerze modyfikacji, inaczej zaklęcie nie może istnieć.",
+    "LockInteractionOverhaul.esp není načten – zapni ho ve správci modů, jinak kouzlo nemůže existovat.")
 TRANSLATIONS["ALIO_SpellKnown"] = T(
     "Manipulate Lock を習得しています。", "Manipulate Lock을 알고 있습니다.",
     "你已掌握 Manipulate Lock。", "Вы знаете Manipulate Lock.",

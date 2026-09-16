@@ -258,7 +258,7 @@ namespace UI
 		ImGuiMCP::PushItemWidth(300.0F);
 		ImGuiMCP::Toggle(strings::TR("ALIO_SpellEnabled", "Know the spell Manipulate Lock"), &spell::enabled);
 		HelpMarker(strings::TR("ALIO_HelpSpellEnabled", "On: the spell is added to your spell book (Alteration, cost 30). Off: it is taken away again."));
-		if (!s.spellResolved) { ImGuiMCP::TextWrapped("%s", strings::TR("ALIO_EslMissing", "ApocryphaLockInteractionOverhaul.esl is not loaded - enable it in your mod manager or the spell cannot exist.")); }
+		if (!s.spellResolved) { ImGuiMCP::TextWrapped("%s", strings::TR("ALIO_EslMissing", "LockInteractionOverhaul.esp is not loaded - enable it in your mod manager or the spell cannot exist.")); }
 		else { ImGuiMCP::TextDisabled("%s", s.spellKnown ? strings::TR("ALIO_SpellKnown", "You know Manipulate Lock.") : strings::TR("ALIO_SpellNotKnown", "You do not know Manipulate Lock right now.")); }
 		int mode = static_cast<int>(std::min<std::uint32_t>(spell::allowed, 2u));
 		if (ComboTR(strings::TR("ALIO_AllowedSpells", "Spells that work on locks"), &mode, kSpellModeKeys, kSpellModeLabels, 3)) { spell::allowed = static_cast<std::uint32_t>(mode); }
