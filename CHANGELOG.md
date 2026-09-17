@@ -7,6 +7,11 @@ Rule 61: this mod's own history, kept beside the code it describes.
 > number; at `.9` the MINOR rolls. The next number is LAST WORKING + 1; failed/scratch/
 > untested numbers are reused. Numbers come from version-ledger.ps1 + set-version.ps1.
 
+## 1.0.4 - 2026-09-16 - untested
+
+### Changed
+- The plugin is now LockInteractionOverhaul.esp, a light ESPFE instead of a .esl, so it can be positioned in the load order rather than pinned to the top. The DLL, INI and log lose the Apocrypha prefix too. Both are breaking: saves that used the old plugin lose what it gave them, and the old INI is no longer read.
+
 ## 1.0.3 - 2026-09-13 - untested
 
 ### Changed
