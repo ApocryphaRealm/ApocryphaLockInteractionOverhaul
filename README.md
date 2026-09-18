@@ -1,6 +1,6 @@
 # ApocryphaRealm Lock Interaction Overhaul
 
-Version 1.0.4
+Version 1.0.5
 
 An original SKSE plugin (GPL-3.0-or-later) that gives locks skill requirements and new ways to open them, with
 every setting on an Apocrypha Menu Framework page. It is a from-scratch rebuild of what the
