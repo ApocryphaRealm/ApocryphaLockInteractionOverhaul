@@ -9,6 +9,7 @@
 #include "Settings.h"
 #include "UI.h"
 
+#include "utils/AddressLibraryGuard.h"
 #include "utils/Logger.h"
 #include "utils/Strings.h"
 
@@ -40,8 +41,15 @@ namespace
 
 SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 {
-	SKSE::Init(a_skse);
 	SKSE::log::init("LockInteractionOverhaul");
+	// Address Library pre-check (the guard every mod of ours carries), BEFORE SKSE::Init, which opens the
+	// Address Library itself (logic library 6026): a missing file gets a message naming it and the plugin
+	// loads inert instead of CommonLibSSE-NG's bare failure line.
+	if (!AddressLibraryGuard::Guard("Lock Interaction Overhaul"))
+	{
+		return true;
+	}
+	SKSE::Init(a_skse);
 
 	settings::Init("LockInteractionOverhaul.ini");
 	settings::ApplyLogLevel();
