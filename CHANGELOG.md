@@ -15,6 +15,9 @@ Rule 61: this mod's own history, kept beside the code it describes.
 - The live lock readout's Smash and Magic lines read '(10 of 0)' on a frozen Adept chest. The numbers were right - a frozen lock needs uFrostMalus (50) less weapon skill, so Adept's 50 became 0, and any Novice lock needs 0 - but 'have of needed' reads as a fraction out of zero. Both lines now use the Pick line's shape, '(10, needs 0)', in all eleven languages.
 - The Unlock Spell page's 'Know the spell Manipulate Lock' switch applies at once: turning it on adds the spell to the player and turning it off removes it, through Locks::ApplySettings() (SyncSpell queued to the game's main thread as a task that captures nothing). Before, the switch only changed the setting, and the spell followed at the next save load or new game (kPostLoadGame/kNewGame run ApplySettings) - the capture run of 2026-10-11 had to reload a save to get the spell. The pick-angle switch already worked this way.
 
+### Changed
+- Built so the DLL and PDB carry no build-machine paths: no user folder and no project folder (the linker's temp files and CommonLibSSE-NG's own sources are now built outside / trimmed from them).
+
 ## 1.0.5 - 2026-09-18 - untested
 
 ### Changed
