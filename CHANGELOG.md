@@ -7,6 +7,14 @@ Rule 61: this mod's own history, kept beside the code it describes.
 > number; at `.9` the MINOR rolls. The next number is LAST WORKING + 1; failed/scratch/
 > untested numbers are reused. Numbers come from version-ledger.ps1 + set-version.ps1.
 
+## 1.0.6 - 2026-10-11 - untested
+
+### Fixed
+- Player skills are read only from a placed player (parentCell set): the lock verdicts' Skill() returns 0 and the DevBench state op reports -1 before a character is loaded, instead of reading actor values off the main menu's empty player singleton - the class of read that crashed HUD Position Manager on 2026-09-29 (package gate rule or-player-actor-values-need-a-placed-player, which this package was the first to meet).
+- Two translated texts still named the files from before the 1.0.4 rename in all eleven languages: the missing-plugin warning said ApocryphaLockInteractionOverhaul.esl and the Log level help said ApocryphaLockInteractionOverhaul.log; the translation files had not been regenerated after the rename. They now say LockInteractionOverhaul.esp and LockInteractionOverhaul.log (tools/gen-translations.py, unchanged for these keys).
+- The live lock readout's Smash and Magic lines read '(10 of 0)' on a frozen Adept chest. The numbers were right - a frozen lock needs uFrostMalus (50) less weapon skill, so Adept's 50 became 0, and any Novice lock needs 0 - but 'have of needed' reads as a fraction out of zero. Both lines now use the Pick line's shape, '(10, needs 0)', in all eleven languages.
+- The Unlock Spell page's 'Know the spell Manipulate Lock' switch applies at once: turning it on adds the spell to the player and turning it off removes it, through Locks::ApplySettings() (SyncSpell queued to the game's main thread as a task that captures nothing). Before, the switch only changed the setting, and the spell followed at the next save load or new game (kPostLoadGame/kNewGame run ApplySettings) - the capture run of 2026-10-11 had to reload a save to get the spell. The pick-angle switch already worked this way.
+
 ## 1.0.5 - 2026-09-18 - untested
 
 ### Changed

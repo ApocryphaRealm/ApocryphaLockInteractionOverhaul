@@ -135,8 +135,8 @@ namespace UI
 			const auto alt = Locks::CanUnlockBySpell(info, RE::ActorValue::kAlteration);
 			const auto des = Locks::CanUnlockBySpell(info, RE::ActorValue::kDestruction);
 			ImGuiMCP::Text(strings::TR("ALIO_LookPick", "Pick: %s (Lockpicking %u, needs %u)"), pick.allowed ? YesNo(true) : YesNo(false), pick.have, pick.needed);
-			ImGuiMCP::Text(strings::TR("ALIO_LookSmash", "Smash: one-handed %s (%u of %u), two-handed %s (%u of %u)"), YesNo(smash1.allowed), smash1.have, smash1.needed, YesNo(smash2.allowed), smash2.have, smash2.needed);
-			ImGuiMCP::Text(strings::TR("ALIO_LookMagic", "Magic: Alteration %s (%u of %u), Destruction %s (%u of %u)"), YesNo(alt.allowed), alt.have, alt.needed, YesNo(des.allowed), des.have, des.needed);
+			ImGuiMCP::Text(strings::TR("ALIO_LookSmash", "Smash: one-handed %s (%u, needs %u), two-handed %s (%u, needs %u)"), YesNo(smash1.allowed), smash1.have, smash1.needed, YesNo(smash2.allowed), smash2.have, smash2.needed);
+			ImGuiMCP::Text(strings::TR("ALIO_LookMagic", "Magic: Alteration %s (%u, needs %u), Destruction %s (%u, needs %u)"), YesNo(alt.allowed), alt.have, alt.needed, YesNo(des.allowed), des.have, des.needed);
 		}
 
 		void StandDownBanner()
@@ -256,7 +256,7 @@ namespace UI
 		ImGuiMCP::TextWrapped("%s", strings::TR("ALIO_SpellIntro", "Manipulate Lock is an Alteration spell that works a lock's mechanism from a distance. Cast it at a lock: with enough Alteration for the lock's level it opens. Destruction can join in: frost freezes a lock (easier to smash), fire thaws it or opens it outright, shock opens it too if allowed."));
 		ImGuiMCP::Spacing();
 		ImGuiMCP::PushItemWidth(300.0F);
-		ImGuiMCP::Toggle(strings::TR("ALIO_SpellEnabled", "Know the spell Manipulate Lock"), &spell::enabled);
+		if (ImGuiMCP::Toggle(strings::TR("ALIO_SpellEnabled", "Know the spell Manipulate Lock"), &spell::enabled)) { Locks::ApplySettings(); }   // 1.0.6: live - adds or removes the spell now (main-thread task), no reload
 		HelpMarker(strings::TR("ALIO_HelpSpellEnabled", "On: the spell is added to your spell book (Alteration, cost 30). Off: it is taken away again."));
 		if (!s.spellResolved) { ImGuiMCP::TextWrapped("%s", strings::TR("ALIO_EslMissing", "LockInteractionOverhaul.esp is not loaded - enable it in your mod manager or the spell cannot exist.")); }
 		else { ImGuiMCP::TextDisabled("%s", s.spellKnown ? strings::TR("ALIO_SpellKnown", "You know Manipulate Lock.") : strings::TR("ALIO_SpellNotKnown", "You do not know Manipulate Lock right now.")); }

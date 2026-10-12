@@ -148,27 +148,27 @@ TRANSLATIONS["ALIO_LookPick"] = T(
     "Otwieranie: %s (Otwieranie zamków %u, wymagane %u)",
     "Páčení: %s (Páčení zámků %u, potřeba %u)")
 TRANSLATIONS["ALIO_LookSmash"] = T(
-    "破壊: 片手 %s（%u / %u）、両手 %s（%u / %u）",
-    "부수기: 한손 %s (%u / %u), 양손 %s (%u / %u)",
-    "砸锁：单手 %s（%u / %u），双手 %s（%u / %u）",
-    "Взлом силой: одноручное %s (%u из %u), двуручное %s (%u из %u)",
-    "Aufbrechen: Einhändig %s (%u von %u), Zweihändig %s (%u von %u)",
-    "Fracture : une main %s (%u sur %u), deux mains %s (%u sur %u)",
-    "Romper: una mano %s (%u de %u), dos manos %s (%u de %u)",
-    "Sfondare: una mano %s (%u su %u), due mani %s (%u su %u)",
-    "Rozbicie: jednoręczna %s (%u z %u), dwuręczna %s (%u z %u)",
-    "Rozbití: jednoruční %s (%u z %u), obouruční %s (%u z %u)")
+    "破壊: 片手 %s（%u、必要 %u）、両手 %s（%u、必要 %u）",
+    "부수기: 한손 %s (%u, 필요 %u), 양손 %s (%u, 필요 %u)",
+    "砸锁：单手 %s（%u，需要 %u），双手 %s（%u，需要 %u）",
+    "Взлом силой: одноручное %s (%u, нужно %u), двуручное %s (%u, нужно %u)",
+    "Aufbrechen: Einhändig %s (%u, nötig %u), Zweihändig %s (%u, nötig %u)",
+    "Fracture : une main %s (%u, requis %u), deux mains %s (%u, requis %u)",
+    "Romper: una mano %s (%u, necesita %u), dos manos %s (%u, necesita %u)",
+    "Sfondare: una mano %s (%u, richiesto %u), due mani %s (%u, richiesto %u)",
+    "Rozbicie: jednoręczna %s (%u, wymagane %u), dwuręczna %s (%u, wymagane %u)",
+    "Rozbití: jednoruční %s (%u, potřeba %u), obouruční %s (%u, potřeba %u)")
 TRANSLATIONS["ALIO_LookMagic"] = T(
-    "魔法: 変化 %s（%u / %u）、破壊 %s（%u / %u）",
-    "마법: 변화 %s (%u / %u), 파괴 %s (%u / %u)",
-    "魔法：变化系 %s（%u / %u），毁灭系 %s（%u / %u）",
-    "Магия: Изменение %s (%u из %u), Разрушение %s (%u из %u)",
-    "Magie: Veränderung %s (%u von %u), Zerstörung %s (%u von %u)",
-    "Magie : Altération %s (%u sur %u), Destruction %s (%u sur %u)",
-    "Magia: Alteración %s (%u de %u), Destrucción %s (%u de %u)",
-    "Magia: Alterazione %s (%u su %u), Distruzione %s (%u su %u)",
-    "Magia: Zmiana %s (%u z %u), Zniszczenie %s (%u z %u)",
-    "Magie: Proměny %s (%u z %u), Ničení %s (%u z %u)")
+    "魔法: 変化 %s（%u、必要 %u）、破壊 %s（%u、必要 %u）",
+    "마법: 변화 %s (%u, 필요 %u), 파괴 %s (%u, 필요 %u)",
+    "魔法：变化系 %s（%u，需要 %u），毁灭系 %s（%u，需要 %u）",
+    "Магия: Изменение %s (%u, нужно %u), Разрушение %s (%u, нужно %u)",
+    "Magie: Veränderung %s (%u, nötig %u), Zerstörung %s (%u, nötig %u)",
+    "Magie : Altération %s (%u, requis %u), Destruction %s (%u, requis %u)",
+    "Magia: Alteración %s (%u, necesita %u), Destrucción %s (%u, necesita %u)",
+    "Magia: Alterazione %s (%u, richiesto %u), Distruzione %s (%u, richiesto %u)",
+    "Magia: Zmiana %s (%u, wymagane %u), Zniszczenie %s (%u, wymagane %u)",
+    "Magie: Proměny %s (%u, potřeba %u), Ničení %s (%u, potřeba %u)")
 TRANSLATIONS["ALIO_StandDown"] = T(
     "Lock Overhaul.esp が読み込まれているため、このMODは完全に停止しています。そのMODを外すまで、これらのページの設定は何も機能しません。",
     "Lock Overhaul.esp가 로드되어 있어 이 모드는 완전히 물러납니다. 해당 모드를 제거하기 전까지 이 페이지의 설정은 아무 효과도 없습니다.",

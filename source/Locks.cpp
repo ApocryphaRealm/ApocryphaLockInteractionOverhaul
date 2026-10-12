@@ -73,7 +73,12 @@ namespace Locks
 		float Skill(RE::ActorValue a_av)
 		{
 			auto* player = Player();
-			auto* avo = player ? player->AsActorValueOwner() : nullptr;
+			// 1.0.6, gate rule or-player-actor-values-need-a-placed-player: at the main menu the player singleton exists with
+			// no character loaded, and reading its actor values there crashed another of our mods (HUD Position Manager,
+			// 2026-09-29). Only a placed player (parentCell set) is asked; 0 otherwise - nothing here acts without a lock in
+			// the world, so 0 is never shown against a real lock.
+			if (!player || !player->parentCell) { return 0.0F; }
+			auto* avo = player->AsActorValueOwner();
 			return avo ? avo->GetActorValue(a_av) : 0.0F;
 		}
 

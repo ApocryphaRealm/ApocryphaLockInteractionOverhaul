@@ -51,6 +51,17 @@ namespace DevBenchTool
 			return std::string(a_args.substr(pos + 1, end - pos - 1));
 		}
 
+		// 1.0.6, gate rule or-player-actor-values-need-a-placed-player: the state op can be asked at the main menu, where the
+		// player singleton exists with no character loaded and reading its actor values crashed HUD Position Manager
+		// (2026-09-29). -1 until the player is placed (parentCell set).
+		float PlacedPlayerSkill(RE::ActorValue a_av)
+		{
+			auto* p = RE::PlayerCharacter::GetSingleton();
+			if (!p || !p->parentCell) { return -1.0F; }
+			auto* avo = p->AsActorValueOwner();
+			return avo ? avo->GetActorValue(a_av) : -1.0F;
+		}
+
 		std::string LockJson(const Locks::LockInfo& a_info)
 		{
 			if (!a_info.valid) { return R"({"valid":false})"; }
@@ -175,11 +186,8 @@ namespace DevBenchTool
 				spell::enabled, spell::allowed, spell::need[0], spell::need[1], spell::need[2], spell::need[3], spell::need[4], spell::frostMalus,
 				pickangle::enabled, pickangle::requiredPerk, general::skillGain, general::skillGainMult, general::sound, general::soundVolume, general::crime, general::crimeGold, general::notifications, debug::logLevel,
 				s.standingDown, s.pickAngleStandingDown, s.spellResolved, s.spellFormID, s.spellKnown, s.patchAttached, EscapeJson(s.patchStatus), EscapeJson(s.requiredPerkName), s.frozenCount, s.opened, EscapeJson(s.lastEvent),
-				[]() { auto* p = RE::PlayerCharacter::GetSingleton(); return p ? p->AsActorValueOwner()->GetActorValue(RE::ActorValue::kLockpicking) : -1.0F; }(),
-				[]() { auto* p = RE::PlayerCharacter::GetSingleton(); return p ? p->AsActorValueOwner()->GetActorValue(RE::ActorValue::kOneHanded) : -1.0F; }(),
-				[]() { auto* p = RE::PlayerCharacter::GetSingleton(); return p ? p->AsActorValueOwner()->GetActorValue(RE::ActorValue::kTwoHanded) : -1.0F; }(),
-				[]() { auto* p = RE::PlayerCharacter::GetSingleton(); return p ? p->AsActorValueOwner()->GetActorValue(RE::ActorValue::kAlteration) : -1.0F; }(),
-				[]() { auto* p = RE::PlayerCharacter::GetSingleton(); return p ? p->AsActorValueOwner()->GetActorValue(RE::ActorValue::kDestruction) : -1.0F; }(),
+				PlacedPlayerSkill(RE::ActorValue::kLockpicking), PlacedPlayerSkill(RE::ActorValue::kOneHanded), PlacedPlayerSkill(RE::ActorValue::kTwoHanded),
+				PlacedPlayerSkill(RE::ActorValue::kAlteration), PlacedPlayerSkill(RE::ActorValue::kDestruction),
 				g_lastSpawned, LockJson(Locks::LookingAt()));
 			reply(json);
 		}
