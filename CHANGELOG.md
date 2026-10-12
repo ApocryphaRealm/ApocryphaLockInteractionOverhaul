@@ -7,7 +7,7 @@ Rule 61: this mod's own history, kept beside the code it describes.
 > number; at `.9` the MINOR rolls. The next number is LAST WORKING + 1; failed/scratch/
 > untested numbers are reused. Numbers come from version-ledger.ps1 + set-version.ps1.
 
-## 1.0.6 - 2026-10-11 - working
+## 1.0.6 - 2026-10-11 - untested
 
 ### Fixed
 - Player skills are read only from a placed player (parentCell set): the lock verdicts' Skill() returns 0 and the DevBench state op reports -1 before a character is loaded, instead of reading actor values off the main menu's empty player singleton - the class of read that crashed HUD Position Manager on 2026-09-29 (package gate rule or-player-actor-values-need-a-placed-player, which this package was the first to meet).
@@ -16,6 +16,7 @@ Rule 61: this mod's own history, kept beside the code it describes.
 - The Unlock Spell page's 'Know the spell Manipulate Lock' switch applies at once: turning it on adds the spell to the player and turning it off removes it, through Locks::ApplySettings() (SyncSpell queued to the game's main thread as a task that captures nothing). Before, the switch only changed the setting, and the spell followed at the next save load or new game (kPostLoadGame/kNewGame run ApplySettings) - the capture run of 2026-10-11 had to reload a save to get the spell. The pick-angle switch already worked this way.
 
 ### Changed
+- The log now defaults to info (uLogLevel=2, in the shipped INI and in the compiled default that Restore defaults uses) instead of trace (0), the level the project ships every mod at: a bug report's LockInteractionOverhaul.log carries the load, settings, warning and error lines, with the level header saying how to turn on trace. Set uLogLevel=0 for everything.
 - Built so the DLL and PDB carry no build-machine paths: no user folder and no project folder (the linker's temp files and CommonLibSSE-NG's own sources are now built outside / trimmed from them).
 
 ## 1.0.5 - 2026-09-18 - untested
