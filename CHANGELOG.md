@@ -7,7 +7,7 @@ Rule 61: this mod's own history, kept beside the code it describes.
 > number; at `.9` the MINOR rolls. The next number is LAST WORKING + 1; failed/scratch/
 > untested numbers are reused. Numbers come from version-ledger.ps1 + set-version.ps1.
 
-## 1.0.6 - 2026-10-11 - untested
+## 1.0.6 - 2026-10-11 - working
 
 ### Fixed
 - Player skills are read only from a placed player (parentCell set): the lock verdicts' Skill() returns 0 and the DevBench state op reports -1 before a character is loaded, instead of reading actor values off the main menu's empty player singleton - the class of read that crashed HUD Position Manager on 2026-09-29 (package gate rule or-player-actor-values-need-a-placed-player, which this package was the first to meet).
