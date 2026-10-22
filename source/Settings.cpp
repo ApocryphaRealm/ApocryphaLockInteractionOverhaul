@@ -114,11 +114,10 @@ namespace settings
 			}
 			spell::frostMalus = std::min<std::uint32_t>(spell::frostMalus, 100u);
 			smash::weapons = std::min<std::uint32_t>(smash::weapons, 2u);
-			spell::allowed = std::min<std::uint32_t>(spell::allowed, 2u);
+			spell::allowed = std::min<std::uint32_t>(spell::allowed, 3u);
 			pickangle::requiredPerk = std::min<std::uint32_t>(pickangle::requiredPerk, 7u);
 			general::skillGainMult = std::clamp(general::skillGainMult, 0.1F, 5.0F);
 			general::soundVolume = std::clamp(general::soundVolume, 0.0F, 1.0F);
-			general::crimeGold = std::min<std::uint32_t>(general::crimeGold, 10000u);
 		}
 
 		bool LoadFileValues()
@@ -196,7 +195,7 @@ namespace settings
 		Add("General", "bSound", general::sound);
 		Add("General", "fSoundVolume", general::soundVolume);
 		Add("General", "bCrime", general::crime);
-		Add("General", "uCrimeGold", general::crimeGold);
+		Add("General", "uCrimeGold", general::crimeGold);   // retired in 1.1.0, kept so the key survives Save
 		Add("General", "bNotifications", general::notifications);
 		static const char* const kTierKeys[kTierCount] = { "uNovice", "uApprentice", "uAdept", "uExpert", "uMaster" };
 		for (int i = 0; i < kTierCount; ++i)

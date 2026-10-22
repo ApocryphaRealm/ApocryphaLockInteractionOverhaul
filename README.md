@@ -1,6 +1,6 @@
 # ApocryphaRealm Lock Interaction Overhaul
 
-Version 1.0.6
+Version 1.1.0
 
 An original SKSE plugin (GPL-3.0-or-later) that gives locks skill requirements and new ways to open them, with
 every setting on an Apocrypha Menu Framework page. It is a from-scratch rebuild of what the
@@ -15,10 +15,11 @@ plus *Remember Lockpick Angle*'s kept angle, whose MIT mechanism is credited bel
   Unbreakable), the game's own skill gain, a crime if it was not yours (unless Quick Hands).
 - **Smash locks** - hit a locked chest or door with a weapon; enough weapon skill breaks it open.
 - **Unlock spell** - *Manipulate Lock* (Alteration) works a lock from a distance. Destruction can
-  join in: frost freezes a lock (easier to smash), fire thaws or opens it, shock opens it.
+  join in, as a ladder you choose on the page: frost spells freeze a lock (easier to smash), then
+  fire thaws or opens it, then shock opens it.
 - **Pick angle** - when a pick breaks, the next one starts where it broke (optionally only with
   a perk). Stands down while RememberLockpickAngle.dll is loaded.
-- **General** - skill gain and its multiplier, sound and volume, crime and its reported value,
+- **General** - skill gain and its multiplier, sound and volume, crime (opening an owned lock is the game's own trespass crime, witnessed by its rules),
   on-screen messages, and one button that switches everything off.
 
 Key-required locks are never touched. The whole mod stands down while `Lock Overhaul.esp` is loaded.

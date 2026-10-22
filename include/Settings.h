@@ -35,7 +35,13 @@ namespace settings
 	namespace spell
 	{
 		inline bool enabled = false;                                     // bUnlockSpell:Spell
-		inline std::uint32_t allowed = 0;                                // uAllowedSpells:Spell - 0 the unlock spell only, 1 plus Destruction without shock, 2 all
+		// uAllowedSpells:Spell - which spells work on locks. Values keep their pre-1.1.0 meaning so an existing INI
+		// is read unchanged: 0 the unlock spell only, 1 plus frost and fire, 2 plus shock too; 3 (new in 1.1.0) plus
+		// frost only. The page lists them as a ladder: unlock spell, + frost, + fire, + shock.
+		inline std::uint32_t allowed = 0;
+		inline bool FrostWorks() { return allowed >= 1 && allowed <= 3; }
+		inline bool FireWorks() { return allowed == 1 || allowed == 2; }
+		inline bool ShockWorks() { return allowed == 2; }
 		inline std::uint32_t need[kTierCount] = { 0, 25, 50, 75, 100 };  // uNovice..uMaster:Spell - magic skill needed per tier
 		inline std::uint32_t frostMalus = 50;                            // uFrostMalus:Spell - a frozen lock needs this much less skill to smash
 	}
@@ -55,7 +61,7 @@ namespace settings
 		inline bool sound = true;            // bSound:General
 		inline float soundVolume = 1.0F;     // fSoundVolume:General - 0 .. 1
 		inline bool crime = true;            // bCrime:General
-		inline std::uint32_t crimeGold = 5;  // uCrimeGold:General - the value reported when a lock is opened against its owner
+		inline std::uint32_t crimeGold = 5;  // uCrimeGold:General - RETIRED in 1.1.0 (read and written so an old INI survives, never used: a trespass crime's bounty is the game's own)
 		inline bool notifications = true;    // bNotifications:General
 	}
 

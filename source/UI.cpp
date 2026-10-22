@@ -28,8 +28,10 @@ namespace UI
 		constexpr const char* kLogLevelLabels[] = { "Trace", "Debug", "Info", "Warning", "Error", "Critical", "Off" };
 		constexpr const char* kWeaponModeKeys[] = { "ALIO_Weapons_TwoOnly", "ALIO_Weapons_OneAndTwo", "ALIO_Weapons_Any" };
 		constexpr const char* kWeaponModeLabels[] = { "Two-handed weapons only", "One- and two-handed weapons", "Any weapon (bows, crossbows, staves, fists too)" };
-		constexpr const char* kSpellModeKeys[] = { "ALIO_Spells_LockOnly", "ALIO_Spells_Destruction", "ALIO_Spells_Shock" };
-		constexpr const char* kSpellModeLabels[] = { "Manipulate Lock only", "Plus Destruction: frost freezes, fire thaws or opens", "All of that plus shock spells open locks" };
+		constexpr const char* kSpellModeKeys[] = { "ALIO_Spells_LockOnly", "ALIO_Spells_Frost", "ALIO_Spells_Destruction", "ALIO_Spells_Shock" };
+		constexpr const char* kSpellModeLabels[] = { "Manipulate Lock only", "Plus frost spells: they freeze a lock", "Plus fire spells: they thaw a frozen lock or open it", "All of that plus shock spells open locks" };
+		// The page lists the spell choices as a ladder; uAllowedSpells keeps its old values (0, 1, 2) and adds 3 = frost only.
+		constexpr std::uint32_t kSpellModeValue[] = { 0, 3, 1, 2 };
 		constexpr const char* kPerkKeys[] = { "ALIO_Perk_None", "ALIO_Perk_Locksmith", "ALIO_Perk_Unbreakable", "ALIO_Perk_QuickHands", "ALIO_Perk_WaxKey", "ALIO_Perk_GoldenTouch", "ALIO_Perk_TreasureHunter", "ALIO_Perk_Custom" };
 		constexpr const char* kPerkLabels[] = { "None", "Locksmith", "Unbreakable", "Quick Hands", "Wax Key", "Golden Touch", "Treasure Hunter", "Custom (sPerkPlugin + uPerkFormID in the INI)" };
 		constexpr const char* kTierKeys[] = { "ALIO_Tier_Novice", "ALIO_Tier_Apprentice", "ALIO_Tier_Adept", "ALIO_Tier_Expert", "ALIO_Tier_Master" };
@@ -260,8 +262,9 @@ namespace UI
 		HelpMarker(strings::TR("ALIO_HelpSpellEnabled", "On: the spell is added to your spell book (Alteration, cost 30). Off: it is taken away again."));
 		if (!s.spellResolved) { ImGuiMCP::TextWrapped("%s", strings::TR("ALIO_EslMissing", "LockInteractionOverhaul.esp is not loaded - enable it in your mod manager or the spell cannot exist.")); }
 		else { ImGuiMCP::TextDisabled("%s", s.spellKnown ? strings::TR("ALIO_SpellKnown", "You know Manipulate Lock.") : strings::TR("ALIO_SpellNotKnown", "You do not know Manipulate Lock right now.")); }
-		int mode = static_cast<int>(std::min<std::uint32_t>(spell::allowed, 2u));
-		if (ComboTR(strings::TR("ALIO_AllowedSpells", "Spells that work on locks"), &mode, kSpellModeKeys, kSpellModeLabels, 3)) { spell::allowed = static_cast<std::uint32_t>(mode); }
+		int mode = 0;
+		for (int i = 0; i < 4; ++i) { if (kSpellModeValue[i] == spell::allowed) { mode = i; } }
+		if (ComboTR(strings::TR("ALIO_AllowedSpells", "Spells that work on locks"), &mode, kSpellModeKeys, kSpellModeLabels, 4)) { spell::allowed = kSpellModeValue[mode]; }
 		HelpMarker(strings::TR("ALIO_HelpAllowedSpells", "Manipulate Lock uses your Alteration; fire and shock use your Destruction against the same table."));
 		TierTable("spell", spell::need, strings::TR("ALIO_SkillMagic", "Magic skill (Alteration for the spell, Destruction for fire and shock)"));
 		Percent(strings::TR("ALIO_FrostMalus", "Frost makes a lock easier to smash by"), spell::frostMalus, strings::TR("ALIO_HelpFrostMalus", "A frozen lock needs this much less weapon skill to smash, 0 to 100."));
@@ -311,9 +314,6 @@ namespace UI
 		ImGuiMCP::SeparatorText(strings::TR("ALIO_CrimeHeader", "Crime"));
 		ImGuiMCP::Toggle(strings::TR("ALIO_Crime", "Opening a lock you do not own is a crime"), &general::crime);
 		HelpMarker(strings::TR("ALIO_HelpCrime", "Witnessed by the game's own rules: followers and animals do not report you, a nearby townsperson does. Quick Hands exempts auto-picking only, as the perk does in vanilla."));
-		float gold = static_cast<float>(general::crimeGold);
-		if (ImGuiMCP::SliderFloat(strings::TR("ALIO_CrimeGold", "Reported value"), &gold, 0.0F, 500.0F, strings::TR("ALIO_GoldFormat", "%.0f gold"))) { general::crimeGold = static_cast<std::uint32_t>(std::clamp(gold, 0.0F, 500.0F) + 0.5F); }
-		HelpMarker(strings::TR("ALIO_HelpCrimeGold", "What the offence is reported as being worth."));
 		ImGuiMCP::SeparatorText(strings::TR("ALIO_MessagesHeader", "Messages"));
 		ImGuiMCP::Toggle(strings::TR("ALIO_Notifications", "Show a message when this mod acts"), &general::notifications);
 		HelpMarker(strings::TR("ALIO_HelpNotifications", "A short line on screen when a lock is refused, opened, frozen or thawed."));

@@ -7,6 +7,17 @@ Rule 61: this mod's own history, kept beside the code it describes.
 > number; at `.9` the MINOR rolls. The next number is LAST WORKING + 1; failed/scratch/
 > untested numbers are reused. Numbers come from version-ledger.ps1 + set-version.ps1.
 
+## 1.1.0 - 2026-10-22 - untested
+
+### Fixed
+- Opening an owned lock (auto-pick, smash, spell) now reports the game's own trespass crime, Actor::TrespassAlarm(lock, owner, -1), the call every vanilla lock site makes, so a witness adds the bounty and guards confront or arrest as for vanilla lockpicking. Before, it raised a steal alarm on the door or chest as if it were a stolen item, the wrong crime type for a lock, so guards shouted 'Stop right there' but no bounty or fight followed (reported by MadAl777, 2026-10-22).
+
+### Changed
+- The Crime section's 'Reported value' slider (uCrimeGold) is retired: a trespass crime's bounty is the game's own. The INI key stays so older INI files load; it is ignored.
+
+### Added
+- Spells that work on locks gains a frost-only step: the page now lists Manipulate Lock only, plus frost (freezes a lock), plus fire (thaws or opens), plus shock (opens). uAllowedSpells keeps its values 0, 1, 2 and adds 3 = frost only; the new text is in all eleven languages.
+
 ## 1.0.6 - 2026-10-11 - working
 
 ### Fixed

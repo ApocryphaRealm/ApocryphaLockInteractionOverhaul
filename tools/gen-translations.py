@@ -548,17 +548,28 @@ TRANSLATIONS["ALIO_Spells_LockOnly"] = T(
     "Только Manipulate Lock", "Nur Manipulate Lock", "Manipulate Lock uniquement",
     "Solo Manipulate Lock", "Solo Manipulate Lock", "Tylko Manipulate Lock",
     "Jen Manipulate Lock")
+TRANSLATIONS["ALIO_Spells_Frost"] = T(
+    "加えて冷気の呪文: 錠を凍らせる",
+    "냉기 주문도 포함: 자물쇠를 얼립니다",
+    "加上冰霜法术：冻结锁",
+    "И заклинания холода: они замораживают замок",
+    "Zusätzlich Frostzauber: sie vereisen ein Schloss",
+    "Plus les sorts de froid : ils gèlent une serrure",
+    "Además los hechizos de hielo: congelan una cerradura",
+    "Più gli incantesimi di gelo: congelano una serratura",
+    "Dodatkowo zaklęcia mrozu: zamrażają zamek",
+    "Navíc mrazivá kouzla: zmrazí zámek")
 TRANSLATIONS["ALIO_Spells_Destruction"] = T(
-    "破壊も含む: フロストで凍結、ファイアで解凍または開錠",
-    "파괴도 포함: 냉기는 얼리고, 화염은 녹이거나 엽니다",
-    "加上毁灭系：冰霜冻结，火焰解冻或开锁",
-    "И Разрушение: холод замораживает, огонь растапливает или открывает",
-    "Zusätzlich Zerstörung: Frost vereist, Feuer taut auf oder öffnet",
-    "Plus la Destruction : le froid gèle, le feu dégèle ou ouvre",
-    "Además Destrucción: el hielo congela, el fuego descongela o abre",
-    "Più Distruzione: il gelo congela, il fuoco scongela o apre",
-    "Dodatkowo Zniszczenie: mróz zamraża, ogień rozmraża lub otwiera",
-    "Navíc Ničení: mráz zmrazí, oheň rozmrazí nebo otevře")
+    "さらに炎の呪文: 凍った錠を解凍するか、開錠する",
+    "화염 주문도 포함: 얼어붙은 자물쇠를 녹이거나 엽니다",
+    "再加火焰法术：解冻冻结的锁，或直接开锁",
+    "И заклинания огня: растапливают замёрзший замок или открывают его",
+    "Zusätzlich Feuerzauber: sie tauen ein vereistes Schloss auf oder öffnen es",
+    "Plus les sorts de feu : ils dégèlent une serrure gelée ou l'ouvrent",
+    "Además los hechizos de fuego: descongelan una cerradura helada o la abren",
+    "Più gli incantesimi di fuoco: scongelano una serratura ghiacciata o la aprono",
+    "Dodatkowo zaklęcia ognia: rozmrażają zamarznięty zamek lub go otwierają",
+    "Navíc ohnivá kouzla: rozmrazí zmrzlý zámek nebo ho otevřou")
 TRANSLATIONS["ALIO_Spells_Shock"] = T(
     "上記に加えて、ショック系呪文でも開錠できる",
     "위의 모든 것에 더해 전격 주문으로도 자물쇠를 엽니다",
@@ -745,19 +756,6 @@ TRANSLATIONS["ALIO_HelpCrime"] = T(
     "I testimoni seguono le regole del gioco: seguaci e animali non ti denunciano, un cittadino vicino sì. «Mani veloci» esenta solo lo scasso automatico, come nel gioco base.",
     "Świadkowie według zasad samej gry: towarzysze i zwierzęta cię nie zgłaszają, pobliski mieszkaniec tak. „Zwinne dłonie” zwalniają tylko z automatycznego otwierania, tak jak w podstawowej grze.",
     "Svědci podle pravidel samotné hry: společníci a zvířata tě neudají, blízký měšťan ano. „Rychlé ruce“ osvobozují jen automatické páčení, stejně jako v základní hře.")
-TRANSLATIONS["ALIO_CrimeGold"] = T(
-    "通報される被害額", "신고되는 가치", "举报的赃物价值", "Заявленная стоимость",
-    "Gemeldeter Wert", "Valeur déclarée", "Valor denunciado", "Valore denunciato",
-    "Zgłoszona wartość", "Nahlášená hodnota")
-TRANSLATIONS["ALIO_GoldFormat"] = T(
-    "%.0f ゴールド", "%.0f 골드", "%.0f 金币", "%.0f зол.", "%.0f Gold",
-    "%.0f pièces d'or", "%.0f de oro", "%.0f oro", "%.0f złota", "%.0f zlatých")
-TRANSLATIONS["ALIO_HelpCrimeGold"] = T(
-    "その違反がいくら相当として通報されるかです。", "그 범행이 얼마짜리로 신고되는지를 정합니다.",
-    "该违法行为被举报时计作的价值。", "На какую сумму заявляется это правонарушение.",
-    "Als wie wertvoll das Vergehen gemeldet wird.", "La valeur à laquelle l'infraction est déclarée.",
-    "El valor con el que se denuncia la infracción.", "Il valore con cui viene denunciato il reato.",
-    "Na jaką wartość zgłaszane jest to wykroczenie.", "Na jakou hodnotu se přestupek nahlásí.")
 TRANSLATIONS["ALIO_MessagesHeader"] = T(
     "メッセージ", "메시지", "提示信息", "Сообщения", "Meldungen",
     "Messages", "Mensajes", "Messaggi", "Komunikaty", "Zprávy")

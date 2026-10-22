@@ -105,7 +105,7 @@ namespace DevBenchTool
 			flagged |= Flag(args, "skillgain", settings::general::skillGain);
 			flagged |= Flag(args, "notify", settings::general::notifications);
 			if (const auto w = JsonString(args, "weapons"); !w.empty()) { settings::smash::weapons = std::min<std::uint32_t>(static_cast<std::uint32_t>(std::strtoul(w.c_str(), nullptr, 10)), 2u); flagged = true; }
-			if (const auto sp = JsonString(args, "spells"); !sp.empty()) { settings::spell::allowed = std::min<std::uint32_t>(static_cast<std::uint32_t>(std::strtoul(sp.c_str(), nullptr, 10)), 2u); flagged = true; }
+			if (const auto sp = JsonString(args, "spells"); !sp.empty()) { settings::spell::allowed = std::min<std::uint32_t>(static_cast<std::uint32_t>(std::strtoul(sp.c_str(), nullptr, 10)), 3u); flagged = true; }
 			if (const auto p = JsonString(args, "perk"); !p.empty()) { settings::pickangle::requiredPerk = std::min<std::uint32_t>(static_cast<std::uint32_t>(std::strtoul(p.c_str(), nullptr, 10)), 7u); flagged = true; }
 			if (flagged) { Locks::ApplySettings(); }
 
@@ -178,13 +178,13 @@ namespace DevBenchTool
 			using namespace settings;
 			const std::string json = std::format(
 				R"({{"ok":true,"settings":{{"requirements":{},"autoPick":{},"openAfterPick":{},"pick":[{},{},{},{},{}],"smash":{},"weapons":{},"smashNeed":[{},{},{},{},{}],)"
-				R"("spell":{},"spells":{},"spellNeed":[{},{},{},{},{}],"frostMalus":{},"pickAngle":{},"requiredPerk":{},"skillGain":{},"skillGainMult":{:.2f},"sound":{},"soundVolume":{:.2f},"crime":{},"crimeGold":{},"notifications":{},"logLevel":{}}},)"
+				R"("spell":{},"spells":{},"spellNeed":[{},{},{},{},{}],"frostMalus":{},"pickAngle":{},"requiredPerk":{},"skillGain":{},"skillGainMult":{:.2f},"sound":{},"soundVolume":{:.2f},"crime":{},"notifications":{},"logLevel":{}}},)"
 				R"("runtime":{{"standingDown":{},"pickAngleStandingDown":{},"spellResolved":{},"spellFormId":"0x{:08X}","spellKnown":{},"patchAttached":{},"patchStatus":"{}","requiredPerkName":"{}","frozenCount":{},"opened":{},"lastEvent":"{}",)"
 				R"("lockpicking":{:.1f},"oneHanded":{:.1f},"twoHanded":{:.1f},"alteration":{:.1f},"destruction":{:.1f},"spawned":"0x{:08X}"}},"look":{}}})",
 				requirements::enabled, requirements::autoPick, requirements::openAfterPick, requirements::pick[0], requirements::pick[1], requirements::pick[2], requirements::pick[3], requirements::pick[4],
 				smash::enabled, smash::weapons, smash::need[0], smash::need[1], smash::need[2], smash::need[3], smash::need[4],
 				spell::enabled, spell::allowed, spell::need[0], spell::need[1], spell::need[2], spell::need[3], spell::need[4], spell::frostMalus,
-				pickangle::enabled, pickangle::requiredPerk, general::skillGain, general::skillGainMult, general::sound, general::soundVolume, general::crime, general::crimeGold, general::notifications, debug::logLevel,
+				pickangle::enabled, pickangle::requiredPerk, general::skillGain, general::skillGainMult, general::sound, general::soundVolume, general::crime, general::notifications, debug::logLevel,
 				s.standingDown, s.pickAngleStandingDown, s.spellResolved, s.spellFormID, s.spellKnown, s.patchAttached, EscapeJson(s.patchStatus), EscapeJson(s.requiredPerkName), s.frozenCount, s.opened, EscapeJson(s.lastEvent),
 				PlacedPlayerSkill(RE::ActorValue::kLockpicking), PlacedPlayerSkill(RE::ActorValue::kOneHanded), PlacedPlayerSkill(RE::ActorValue::kTwoHanded),
 				PlacedPlayerSkill(RE::ActorValue::kAlteration), PlacedPlayerSkill(RE::ActorValue::kDestruction),

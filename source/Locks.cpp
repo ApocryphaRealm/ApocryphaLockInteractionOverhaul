@@ -165,10 +165,14 @@ namespace Locks
 			if (!settings::general::crime || !a_info.crime || !a_ref) { return; }
 			auto* player = Player();
 			if (!player) { return; }
-			auto* base = a_ref->GetBaseObject();
+			// Vanilla breaks into an owned lock with a TRESPASS crime: Actor::TrespassAlarm(ref, GetOwner(ref), -1),
+			// the call every vanilla lock/door site makes (1.5.97 callers of ID 36432 all pass r9d = -1). -1 = "make
+			// a new crime"; the bounty amount and the witness/confront handling are the game's own. Before 1.1.0
+			// this raised Actor::StealAlarm on the door/chest as if it were a stolen item, which no witness could
+			// turn into a bounty (nothing stolen is in the player's inventory): guards came, no bounty, no arrest.
 			auto* owner = a_ref->GetOwner();
-			player->StealAlarm(a_ref, base, 1, static_cast<std::int32_t>(settings::general::crimeGold), owner, true);
-			logger::debug("crime: {} {} against its owner - alarm raised at {} gold", a_how, a_info.name, settings::general::crimeGold);
+			player->TrespassAlarm(a_ref, owner, -1);
+			logger::debug("crime: {} {} against its owner - trespass alarm raised", a_how, a_info.name);
 		}
 
 		bool HasPerk(RE::FormID a_perk)
@@ -308,19 +312,20 @@ namespace Locks
 				SpellUnlock(a_ref, RE::ActorValue::kAlteration);
 				return;
 			}
-			if (settings::spell::allowed == 0) { return; }   // only the unlock spell works on locks
+			if (!settings::spell::FrostWorks() && !settings::spell::FireWorks() && !settings::spell::ShockWorks()) { return; }   // only the unlock spell works on locks
 			if (a_frost)
 			{
-				Freeze(a_ref);
+				if (settings::spell::FrostWorks()) { Freeze(a_ref); }
 				return;
 			}
 			if (a_fire)
 			{
+				if (!settings::spell::FireWorks()) { return; }
 				if (a_info.frozen) { Thaw(a_ref); }
 				else { SpellUnlock(a_ref, RE::ActorValue::kDestruction); }
 				return;
 			}
-			if (a_shock && settings::spell::allowed >= 2)
+			if (a_shock && settings::spell::ShockWorks())
 			{
 				SpellUnlock(a_ref, RE::ActorValue::kDestruction);
 			}
@@ -338,7 +343,7 @@ namespace Locks
 				auto* cause = a_event->cause.get();
 				auto* player = Player();
 				if (!target || !cause || !player || cause != player) { return RE::BSEventNotifyControl::kContinue; }
-				if (!settings::smash::enabled && !settings::spell::enabled && settings::spell::allowed == 0) { return RE::BSEventNotifyControl::kContinue; }
+				if (!settings::smash::enabled && !settings::spell::enabled && !settings::spell::FrostWorks()) { return RE::BSEventNotifyControl::kContinue; }
 
 				const LockInfo info = Describe(target);
 				if (!info.valid || !info.locked || info.requiresKey) { return RE::BSEventNotifyControl::kContinue; }
