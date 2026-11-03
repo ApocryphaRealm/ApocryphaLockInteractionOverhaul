@@ -197,7 +197,7 @@ namespace UI
 			logger::warn("The installed menu framework is older than this plugin's settings menu needs. Update it (Apocrypha Menu Framework, or SKSE Menu Framework version 3 or newer).");
 			return;
 		}
-		SKSEMenuFramework::SetSection("ApocryphaRealm Lock Interaction Overhaul");
+		SKSEMenuFramework::SetSection("Lock Interaction Overhaul");
 		SKSEMenuFramework::AddSectionItem("Requirements", RequirementsPanel::Render);
 		SKSEMenuFramework::AddSectionItem("Smash Locks", SmashPanel::Render);
 		SKSEMenuFramework::AddSectionItem("Unlock Spell", SpellPanel::Render);

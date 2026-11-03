@@ -7,6 +7,11 @@ Rule 61: this mod's own history, kept beside the code it describes.
 > number; at `.9` the MINOR rolls. The next number is LAST WORKING + 1; failed/scratch/
 > untested numbers are reused. Numbers come from version-ledger.ps1 + set-version.ps1.
 
+## 1.1.1 - 2026-11-03 - untested
+
+### Fixed
+- The settings menu is named Lock Interaction Overhaul, without the author prefix.
+
 ## 1.1.0 - 2026-10-22 - working
 
 ### Fixed
