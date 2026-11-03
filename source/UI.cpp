@@ -5,6 +5,7 @@
 #include "SKSEMenuFramework.h"
 
 #include "Locks.h"
+#include "PreciseSlider.h"
 #include "Settings.h"
 
 #include "utils/Logger.h"
@@ -102,7 +103,7 @@ namespace UI
 		bool Percent(const char* a_label, std::uint32_t& a_value, const char* a_help)
 		{
 			float v = static_cast<float>(a_value);
-			const bool changed = ImGuiMCP::SliderFloat(a_label, &v, 0.0F, 100.0F, "%.0f");
+			const bool changed = precise::SliderFloat(a_label, &v, 0.0F, 100.0F, "%.0f");
 			if (changed) { a_value = static_cast<std::uint32_t>(std::clamp(v, 0.0F, 100.0F) + 0.5F); }
 			HelpMarker(a_help);
 			return changed;
@@ -304,12 +305,12 @@ namespace UI
 		ImGuiMCP::SeparatorText(strings::TR("ALIO_SkillGainHeader", "Skill gain"));
 		ImGuiMCP::Toggle(strings::TR("ALIO_SkillGain", "Opening a lock raises the skill that opened it"), &general::skillGain);
 		HelpMarker(strings::TR("ALIO_HelpSkillGain", "The game's own per-level amounts (fSkillUsageLockPick...), applied to Lockpicking, the weapon skill or the magic school that opened the lock."));
-		ImGuiMCP::SliderFloat(strings::TR("ALIO_SkillGainMult", "Skill gain multiplier"), &general::skillGainMult, 0.1F, 5.0F, "%.2f x");
+		precise::SliderFloat(strings::TR("ALIO_SkillGainMult", "Skill gain multiplier"), &general::skillGainMult, 0.1F, 5.0F, "%.2f x");
 		HelpMarker(strings::TR("ALIO_HelpSkillGainMult", "Scales that gain, 0.1 to 5."));
 		ImGuiMCP::SeparatorText(strings::TR("ALIO_SoundHeader", "Sound"));
 		ImGuiMCP::Toggle(strings::TR("ALIO_Sound", "Play a sound when a lock opens"), &general::sound);
 		HelpMarker(strings::TR("ALIO_HelpSound", "The game's own unlock sound for picks and spells, a smash for weapons."));
-		ImGuiMCP::SliderFloat(strings::TR("ALIO_Volume", "Volume"), &general::soundVolume, 0.0F, 1.0F, "%.2f");
+		precise::SliderFloat(strings::TR("ALIO_Volume", "Volume"), &general::soundVolume, 0.0F, 1.0F, "%.2f");
 		HelpMarker(strings::TR("ALIO_HelpVolume", "0 to 1."));
 		ImGuiMCP::SeparatorText(strings::TR("ALIO_CrimeHeader", "Crime"));
 		ImGuiMCP::Toggle(strings::TR("ALIO_Crime", "Opening a lock you do not own is a crime"), &general::crime);

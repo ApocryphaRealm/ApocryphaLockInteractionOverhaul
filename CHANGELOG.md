@@ -10,6 +10,7 @@ Rule 61: this mod's own history, kept beside the code it describes.
 ## 1.1.1 - 2026-11-03 - untested
 
 ### Fixed
+- Every settings slider moves one shown digit per D-pad or arrow nudge, and a typed number stays inside the slider's range.
 - The settings menu is named Lock Interaction Overhaul, without the author prefix.
 
 ## 1.1.0 - 2026-10-22 - working
