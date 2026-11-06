@@ -52,7 +52,9 @@ namespace Locks
 		std::uint32_t have = 0;
 		std::string why;
 	};
-	Verdict CanPick(const LockInfo& a_lock);                      // Lockpicking vs the requirement table
+	RE::ActorValue LockSkill();                                  // the skill picking uses: Lockpicking, or Pickpocket (uLockSkill)
+	const char* LockSkillName();                                 // that skill's in-game name (Security under Hand to Hand)
+	Verdict CanPick(const LockInfo& a_lock);                      // the lock skill vs the requirement table
 	Verdict CanSmash(const LockInfo& a_lock, RE::ActorValue a_skill);  // weapon skill vs the smash table (frost malus applied)
 	Verdict CanUnlockBySpell(const LockInfo& a_lock, RE::ActorValue a_school);  // magic skill vs the spell table
 

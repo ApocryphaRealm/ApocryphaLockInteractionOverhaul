@@ -563,10 +563,37 @@ namespace Locks
 
 	LockInfo LookingAt() { return Describe(CrosshairRef()); }
 
+	// Hand to Hand (Nexus 59790) turns Lockpicking into Hand to Hand and moves the lock perks to Pickpocket, renamed Security
+	// (a Nexus request, 2026-11-06). Auto follows its plugin; the choice can also be set by hand for other mods that do the same.
+	RE::ActorValue LockSkill()
+	{
+		const auto mode = settings::general::lockSkill;
+		if (mode == 1) { return RE::ActorValue::kLockpicking; }
+		if (mode == 2) { return RE::ActorValue::kPickpocket; }
+		static int handToHand = -1;  // -1 not looked up yet: the data handler only knows the load order once data has loaded
+		if (handToHand < 0)
+		{
+			auto* data = RE::TESDataHandler::GetSingleton();
+			if (!data) { return RE::ActorValue::kLockpicking; }
+			handToHand = data->LookupModByName("HandtoHand.esp") ? 1 : 0;
+			logger::info("lock skill: Auto, HandtoHand.esp {} - picking uses {}", handToHand ? "loaded" : "not loaded", handToHand ? "Pickpocket" : "Lockpicking");
+		}
+		return handToHand ? RE::ActorValue::kPickpocket : RE::ActorValue::kLockpicking;
+	}
+
+	const char* LockSkillName()
+	{
+		const auto av = LockSkill();
+		auto* list = RE::ActorValueList::GetSingleton();
+		auto* info = list ? list->actorValues[static_cast<std::size_t>(av)] : nullptr;  // the array: the two build lines name the getter differently
+		const char* name = info ? info->GetFullName() : nullptr;
+		return (name && *name) ? name : (av == RE::ActorValue::kPickpocket ? "Pickpocket" : "Lockpicking");
+	}
+
 	Verdict CanPick(const LockInfo& a_lock)
 	{
 		Verdict v;
-		v.have = static_cast<std::uint32_t>(Skill(RE::ActorValue::kLockpicking));
+		v.have = static_cast<std::uint32_t>(Skill(LockSkill()));
 		v.needed = a_lock.tier == Tier::kNone ? 0 : settings::requirements::pick[static_cast<int>(a_lock.tier)];
 		v.allowed = !settings::requirements::enabled || v.have >= v.needed;
 		v.why = v.allowed ? "Lockpicking suffices" : "Lockpicking too low";
@@ -626,7 +653,7 @@ namespace Locks
 			player->RemoveItem(g_lockpick, 1, RE::ITEM_REMOVE_REASON::kRemove, nullptr, nullptr);
 		}
 		if (!Unlock(a_ref, info, "picked", kSoundUnlock)) { return false; }
-		GrantSkill(RE::ActorValue::kLockpicking, info.tier);
+		GrantSkill(LockSkill(), info.tier);
 		if (!HasPerk(kPerkQuickHands)) { Alarm(a_ref, info, "auto-picked"); }
 		if (settings::requirements::openAfterPick)
 		{

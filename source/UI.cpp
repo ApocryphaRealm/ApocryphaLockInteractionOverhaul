@@ -27,6 +27,8 @@ namespace UI
 		constexpr int kLogLevelCount = 7;
 		constexpr const char* kLogLevelKeys[] = { "ALIO_Log_Trace", "ALIO_Log_Debug", "ALIO_Log_Info", "ALIO_Log_Warning", "ALIO_Log_Error", "ALIO_Log_Critical", "ALIO_Log_Off" };
 		constexpr const char* kLogLevelLabels[] = { "Trace", "Debug", "Info", "Warning", "Error", "Critical", "Off" };
+		constexpr const char* kLockSkillKeys[] = { "ALIO_LockSkill_Auto", "ALIO_LockSkill_Lockpicking", "ALIO_LockSkill_Pickpocket" };
+		constexpr const char* kLockSkillLabels[] = { "Auto (Pickpocket when Hand to Hand is installed)", "Lockpicking", "Pickpocket" };
 		constexpr const char* kWeaponModeKeys[] = { "ALIO_Weapons_TwoOnly", "ALIO_Weapons_OneAndTwo", "ALIO_Weapons_Any" };
 		constexpr const char* kWeaponModeLabels[] = { "Two-handed weapons only", "One- and two-handed weapons", "Any weapon (bows, crossbows, staves, fists too)" };
 		constexpr const char* kSpellModeKeys[] = { "ALIO_Spells_LockOnly", "ALIO_Spells_Frost", "ALIO_Spells_Destruction", "ALIO_Spells_Shock" };
@@ -138,6 +140,7 @@ namespace UI
 			const auto alt = Locks::CanUnlockBySpell(info, RE::ActorValue::kAlteration);
 			const auto des = Locks::CanUnlockBySpell(info, RE::ActorValue::kDestruction);
 			ImGuiMCP::Text(strings::TR("ALIO_LookPick", "Pick: %s (Lockpicking %u, needs %u)"), pick.allowed ? YesNo(true) : YesNo(false), pick.have, pick.needed);
+			if (Locks::LockSkill() != RE::ActorValue::kLockpicking) { ImGuiMCP::SameLine(); ImGuiMCP::Text("[%s]", Locks::LockSkillName()); }
 			ImGuiMCP::Text(strings::TR("ALIO_LookSmash", "Smash: one-handed %s (%u, needs %u), two-handed %s (%u, needs %u)"), YesNo(smash1.allowed), smash1.have, smash1.needed, YesNo(smash2.allowed), smash2.have, smash2.needed);
 			ImGuiMCP::Text(strings::TR("ALIO_LookMagic", "Magic: Alteration %s (%u, needs %u), Destruction %s (%u, needs %u)"), YesNo(alt.allowed), alt.have, alt.needed, YesNo(des.allowed), des.have, des.needed);
 		}
@@ -219,7 +222,7 @@ namespace UI
 		ImGuiMCP::SeparatorText(strings::TR("ALIO_ReqHeader", "Lock requirements"));
 		ImGuiMCP::Toggle(strings::TR("ALIO_ReqEnabled", "Require a Lockpicking skill per lock level"), &requirements::enabled);
 		HelpMarker(strings::TR("ALIO_HelpReqEnabled", "On: the table below gates the picking menu. Off: any lock can be tried, as in vanilla."));
-		TierTable("pick", requirements::pick, strings::TR("ALIO_SkillLockpicking", "Lockpicking"));
+		TierTable("pick", requirements::pick, Locks::LockSkill() == RE::ActorValue::kLockpicking ? strings::TR("ALIO_SkillLockpicking", "Lockpicking") : Locks::LockSkillName());
 		ImGuiMCP::SeparatorText(strings::TR("ALIO_AutoPickHeader", "Auto pick"));
 		ImGuiMCP::Toggle(strings::TR("ALIO_AutoPick", "Open locks without the minigame"), &requirements::autoPick);
 		HelpMarker(strings::TR("ALIO_HelpAutoPick", "With enough Lockpicking (the table above) the lock simply opens: one lockpick is used (none with the Unbreakable perk), Lockpicking rises as the game's own picking would raise it, and opening an owned lock is a crime unless you have Quick Hands."));
@@ -302,6 +305,10 @@ namespace UI
 		using namespace settings;
 		StandDownBanner();
 		ImGuiMCP::PushItemWidth(260.0F);
+		ImGuiMCP::SeparatorText(strings::TR("ALIO_LockSkillHeader", "Lock skill"));
+		int lockSkill = static_cast<int>(std::min<std::uint32_t>(general::lockSkill, 2u));
+		if (ComboTR(strings::TR("ALIO_LockSkill", "Skill used for picking locks"), &lockSkill, kLockSkillKeys, kLockSkillLabels, 3)) { general::lockSkill = static_cast<std::uint32_t>(lockSkill); }
+		HelpMarker(strings::TR("ALIO_HelpLockSkill", "Which skill the requirement table, auto pick and skill gain use. Hand to Hand and similar mods move the lock perks from Lockpicking to Pickpocket (shown as Security); Auto follows Hand to Hand by itself."));
 		ImGuiMCP::SeparatorText(strings::TR("ALIO_SkillGainHeader", "Skill gain"));
 		ImGuiMCP::Toggle(strings::TR("ALIO_SkillGain", "Opening a lock raises the skill that opened it"), &general::skillGain);
 		HelpMarker(strings::TR("ALIO_HelpSkillGain", "The game's own per-level amounts (fSkillUsageLockPick...), applied to Lockpicking, the weapon skill or the magic school that opened the lock."));

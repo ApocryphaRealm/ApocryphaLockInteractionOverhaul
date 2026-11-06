@@ -116,6 +116,7 @@ namespace settings
 			smash::weapons = std::min<std::uint32_t>(smash::weapons, 2u);
 			spell::allowed = std::min<std::uint32_t>(spell::allowed, 3u);
 			pickangle::requiredPerk = std::min<std::uint32_t>(pickangle::requiredPerk, 7u);
+			general::lockSkill = std::min<std::uint32_t>(general::lockSkill, 2u);
 			general::skillGainMult = std::clamp(general::skillGainMult, 0.1F, 5.0F);
 			general::soundVolume = std::clamp(general::soundVolume, 0.0F, 1.0F);
 		}
@@ -190,6 +191,7 @@ namespace settings
 		Add("PickAngle", "uRequiredPerk", pickangle::requiredPerk);
 		Add("PickAngle", "sPerkPlugin", pickangle::perkPlugin);
 		Add("PickAngle", "uPerkFormID", pickangle::perkFormID);
+		Add("General", "uLockSkill", general::lockSkill);
 		Add("General", "bSkillGain", general::skillGain);
 		Add("General", "fSkillGainMult", general::skillGainMult);
 		Add("General", "bSound", general::sound);

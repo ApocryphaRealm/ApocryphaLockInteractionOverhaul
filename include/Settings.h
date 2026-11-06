@@ -56,6 +56,7 @@ namespace settings
 
 	namespace general
 	{
+		inline std::uint32_t lockSkill = 0;  // uLockSkill:General - 0 auto (Pickpocket when HandtoHand.esp is loaded), 1 Lockpicking, 2 Pickpocket
 		inline bool skillGain = true;        // bSkillGain:General
 		inline float skillGainMult = 1.0F;   // fSkillGainMult:General - 0.1 .. 5
 		inline bool sound = true;            // bSound:General

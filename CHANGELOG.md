@@ -7,6 +7,11 @@ Rule 61: this mod's own history, kept beside the code it describes.
 > number; at `.9` the MINOR rolls. The next number is LAST WORKING + 1; failed/scratch/
 > untested numbers are reused. Numbers come from version-ledger.ps1 + set-version.ps1.
 
+## 1.2.0 - 2026-11-06 - untested
+
+### Added
+- Lock skill setting (General page, uLockSkill): picking can use Pickpocket instead of Lockpicking. Auto switches to Pickpocket when Hand to Hand (HandtoHand.esp) is loaded, since it moves the lock perks there as Security; the requirement table shows the skill's in-game name
+
 ## 1.1.1 - 2026-11-03 - untested
 
 ### Fixed
